@@ -21,6 +21,7 @@ A spiral fit inherits every winding error it is given: one ladder off by one, or
 | **Upstream impact** | Three defects in `find_inconsistent_windings.py` found by the audit: a candidate patch for the two solver defects, failing before and passing after on villa `main` as of 20 September 2026 (`23c3d759`); a tested correction and an implementation specification for the third |
 | **Evidence** | 645 equations, 342 fundamental cycles, 3 frame transforms with 0 unexplained changes, 319 tests passed and 1 skipped, solver tests passing in three Python/NumPy/SciPy environments, every input and result pinned by SHA-256 |
 | **Integration** | Reads the four input files the spiral fit reads, exports upstream `vc_pointcollections_json_version` 1 collections the fit loads, and audits the full annotation corpus in about two seconds |
+| **Upstream report** | [ScrollPrize/villa#1855](https://github.com/ScrollPrize/villa/issues/1855), with the real-data reproduction and the candidate patch |
 
 ![The attachment gap at col109 point 1560, and the equations the upstream solver keeps](results/wide_corrected/upstream_defects.png)
 
