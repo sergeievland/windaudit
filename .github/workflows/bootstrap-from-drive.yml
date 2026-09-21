@@ -1,0 +1,58 @@
+name: bootstrap exact v6 archive
+
+on:
+  push:
+    paths:
+      - '.github/workflows/bootstrap-from-drive.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  import-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download exact uploaded archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          url='https://drive.usercontent.google.com/download?id=12T7uSihUm1A9Lo92QDXWPJ3LTt_5xk-j&export=download&confirm=t'
+          curl --fail --location --retry 3 --retry-delay 2 "$url" -o /tmp/windaudit.zip
+          echo '3c409549c0367a8c920c7ec4f7deedfd0d5177c1cfba96271e37ac32bd59eafe  /tmp/windaudit.zip' | sha256sum -c -
+
+      - name: Replace working tree with exact archive contents
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/windaudit-unpack
+          mkdir -p /tmp/windaudit-unpack
+          unzip -q /tmp/windaudit.zip -d /tmp/windaudit-unpack
+          test -f /tmp/windaudit-unpack/windaudit/README.md
+          rsync -a --delete --exclude='.git/' /tmp/windaudit-unpack/windaudit/ ./
+
+      - name: Verify repository manifests
+        run: python scripts/verify_repo.py
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install and run tests
+        run: |
+          python -m pip install -e ".[dev]"
+          python -m pytest -q
+
+      - name: Commit exact verified tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Sergei Evland'
+          git config user.email 'sergei.evland@gmail.com'
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m 'Import exact verified windaudit v6 release'
+          git push origin HEAD:main
