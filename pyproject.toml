@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "windaudit"
+version = "0.2.1"
+description = "Pre-fit consistency auditing of winding annotations for scroll unwrapping"
+authors = [{name = "Sergei Evland"}]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.11"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pillow>=9.1"]
+figures = ["matplotlib>=3.7", "pillow>=9.1"]
+
+[project.scripts]
+windaudit = "windaudit.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools]
+packages = ["windaudit"]

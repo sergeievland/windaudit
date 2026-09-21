@@ -1,0 +1,40 @@
+{
+ "what": "core annotation audit of all 7,645 points: frame, calibration, order audit, same-sheet links, cycle proof, exact repair, review queue and export; planted-defect trials and sensitivity sweep skipped",
+ "command": "python -m windaudit run --inputs data/paris4 --out out/core --skip-planted --skip-sweep",
+ "full_validation_run": "results/paris4/audit_report.json, runtime_seconds 102.0, adds the planted-defect trials and the 27-setting sensitivity sweep",
+ "frozen_null": "results/frozen_null.json, 500 rounds, runtime_seconds 286.6, run separately by scripts/frozen_null.py",
+ "environment": {
+  "python": "3.11.15",
+  "numpy": "2.4.4",
+  "scipy": "1.17.1",
+  "cpu_count": 2,
+  "machine": "x86_64"
+ },
+ "runs": [
+  {
+   "wall_seconds_including_interpreter_start": 1.89,
+   "internal_runtime_seconds": 1.3,
+   "config_sha256": "eb22ab42a4ad0e36560fe6f4299816dae4f18844a2499b5290f0240013db5430"
+  },
+  {
+   "wall_seconds_including_interpreter_start": 1.62,
+   "internal_runtime_seconds": 1.1,
+   "config_sha256": "eb22ab42a4ad0e36560fe6f4299816dae4f18844a2499b5290f0240013db5430"
+  },
+  {
+   "wall_seconds_including_interpreter_start": 1.77,
+   "internal_runtime_seconds": 1.2,
+   "config_sha256": "eb22ab42a4ad0e36560fe6f4299816dae4f18844a2499b5290f0240013db5430"
+  },
+  {
+   "wall_seconds_including_interpreter_start": 1.7,
+   "internal_runtime_seconds": 1.2,
+   "config_sha256": "eb22ab42a4ad0e36560fe6f4299816dae4f18844a2499b5290f0240013db5430"
+  },
+  {
+   "wall_seconds_including_interpreter_start": 1.64,
+   "internal_runtime_seconds": 1.1,
+   "config_sha256": "eb22ab42a4ad0e36560fe6f4299816dae4f18844a2499b5290f0240013db5430"
+  }
+ ]
+}

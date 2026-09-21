@@ -1,0 +1,115 @@
+WIDE SCAN-SPACE ACCEPTANCE CHECKS
+
+BASELINE PRESERVATION
+All 343 files in windaudit-0.3.0-scanspace-audit.zip remain byte-identical.
+All previously published measurements, input files, README text and JSON exports are unchanged.
+See preservation.json for the complete file-by-file hashes.
+
+REPRODUCE RUN 1
+abs_winding.json: OK
+relative_windings.json: OK
+same_windings.json: OK
+umbilicus.json: OK
+........................................................................ [ 30%]
+........................................................................ [ 60%]
+..................................................................s..... [ 90%]
+.......................                                                  [100%]
+238 passed, 1 skipped in 8.18s
+{
+ "points_audited": 7645,
+ "order_pairs_tested": 11447,
+ "order_violations": 0,
+ "same_sheet_links": 2371,
+ "conflicting_pairs": 0,
+ "effective_cycles": 3,
+ "failing_cycles": 0,
+ "min_edge_cut": [],
+ "certified_links": 2371,
+ "runtime_seconds": 110.2
+}
+reproduced: 17 sections identical
+Order graph, coverage, hashes, negative-cycle witness, 140 null records and 238 diagnostic identities verified.
+exit_code=0
+
+REPRODUCE RUN 2
+abs_winding.json: OK
+relative_windings.json: OK
+same_windings.json: OK
+umbilicus.json: OK
+........................................................................ [ 30%]
+........................................................................ [ 60%]
+..................................................................s..... [ 90%]
+.......................                                                  [100%]
+238 passed, 1 skipped in 8.10s
+{
+ "points_audited": 7645,
+ "order_pairs_tested": 11447,
+ "order_violations": 0,
+ "same_sheet_links": 2371,
+ "conflicting_pairs": 0,
+ "effective_cycles": 3,
+ "failing_cycles": 0,
+ "min_edge_cut": [],
+ "certified_links": 2371,
+ "runtime_seconds": 108.9
+}
+reproduced: 17 sections identical
+Order graph, coverage, hashes, negative-cycle witness, 140 null records and 238 diagnostic identities verified.
+exit_code=0
+
+FINAL FULL TEST SUITE
+........................................................................ [ 30%]
+........................................................................ [ 60%]
+..................................................................s..... [ 90%]
+.......................                                                  [100%]
+238 passed, 1 skipped in 8.06s
+exit_code=0
+
+WIDE FULL RECOMPUTATION
+WIDE_FORCE_RECOMPUTE=1 bash scripts/reproduce_wide.sh
+GRAPH 335 645 3
+before Optimization terminated successfully. (HiGHS Status 7: Optimal) 2 True
+after Optimization terminated successfully. (HiGHS Status 7: Optimal) 2 True
+Dataset hashes and budget verified; both retained graphs checked independently.
+Repeat: all 10 compared JSON outputs identical after excluding measured runtimes.
+exit_code=0
+Full output: reproduce_wide.txt
+
+INDEPENDENT CYCLE AND REPAIR CHECKS
+{
+  "vertices_in_measured_graph": 330,
+  "edges": 645,
+  "components": 27,
+  "fundamental_cycles": 342,
+  "inconsistent_fundamental_cycles": 3,
+  "independent_checks": {
+    "before": {
+      "retained_graph_consistent": true,
+      "all_proposals_are_numeric_delta_edits": true,
+      "full_graph_after_proposed_delta_edits_consistent": true
+    },
+    "after": {
+      "retained_graph_consistent": true,
+      "all_proposals_are_numeric_delta_edits": true,
+      "full_graph_after_proposed_delta_edits_consistent": true
+    }
+  },
+  "observed_quality_improvement": false,
+  "scope": "Real sampled surfaces and original annotations; no planted defects. Both solver proposals are checked against every measured edge."
+}
+Repeated cycle_evidence.json is byte-identical.
+
+certified_links.json: byte-identical; sha256=e865fcaa4a02cd78e00f814613bc34c0c8b9cec804952149d026feac84446bad
+review_queue.json: byte-identical; sha256=067f30a026daccdef47928b2b105bbd2d464609f4f32e29c1170f0c7e85286ac
+
+ORIGINAL MANIFEST
+sha256sum -c SHA256SUMS: exit_code=0
+Full output: original_manifest_check.txt
+All original manifest entries passed.
+
+ADDITIVE MANIFEST AND ARCHIVE
+sha256sum -c SHA256SUMS.wide: exit_code=0; all 7012 entries passed.
+Archive CRC: all 7013 entries passed.
+Archive contains no __pycache__ directories or .pyc files.
+All UTF-8 archive text files passed the Cyrillic-character scan.
+The final manifest was rebuilt after adding this acceptance record and checked again.

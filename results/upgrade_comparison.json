@@ -1,0 +1,11 @@
+{
+  "changed_top_level_sections": [
+    "tool",
+    "environment",
+    "sensitivity_sweep",
+    "robustness",
+    "runtime_seconds"
+  ],
+  "headline_counts_unchanged": true,
+  "reason": "Correct edge-union objective changes some secondary repairs in the sensitivity sweep; reports have been regenerated."
+}

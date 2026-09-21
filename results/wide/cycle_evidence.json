@@ -1,0 +1,416 @@
+{
+  "vertices_in_measured_graph": 330,
+  "edges": 645,
+  "components": 27,
+  "fundamental_cycles": 342,
+  "inconsistent_fundamental_cycles": 3,
+  "contradiction_witnesses": [
+    {
+      "cycle": [
+        {
+          "edge_index": 386,
+          "direction": 1,
+          "delta": 1,
+          "from": "auto_grown_20260416042041050",
+          "to": "auto_grown_20260416060452889"
+        },
+        {
+          "edge_index": 390,
+          "direction": -1,
+          "delta": 1,
+          "from": "auto_grown_20260416060452889",
+          "to": "auto_grown_20260429215626691_sel_20260512_102916_8"
+        },
+        {
+          "edge_index": 126,
+          "direction": -1,
+          "delta": -1,
+          "from": "auto_grown_20260429215626691_sel_20260512_102916_8",
+          "to": "4424_david_masked"
+        },
+        {
+          "edge_index": 146,
+          "direction": 1,
+          "delta": -2,
+          "from": "4424_david_masked",
+          "to": "auto_grown_20260416042041050"
+        }
+      ],
+      "integer_sum": -1,
+      "endpoint_bbox_xyz": [
+        [
+          4620.0029296875,
+          4444.33154296875,
+          14000.0
+        ],
+        [
+          5235.00341796875,
+          4961.998046875,
+          14592.021484375
+        ]
+      ],
+      "source_edges": [
+        {
+          "pcl_id": 82,
+          "pcl_name": "col109",
+          "source_file": "relative_windings.json",
+          "kind": "relative",
+          "neighbor": "auto_grown_20260416060452889",
+          "from_ij": [
+            65.57485961914062,
+            93.10743713378906
+          ],
+          "to_ij": [
+            6.712952613830566,
+            5.678558826446533
+          ],
+          "from_point_id": 1559,
+          "to_point_id": 1560,
+          "from_zyx": [
+            14242.12890625,
+            4460.83544921875,
+            5119.82080078125
+          ],
+          "to_zyx": [
+            14220.4853515625,
+            4456.23095703125,
+            5151.95849609375
+          ],
+          "winding_delta": 0,
+          "raw_winding_delta": 1,
+          "pcl_unwrap_adjustment": 1,
+          "pcl_branch_delta": -1,
+          "P": "auto_grown_20260416042041050",
+          "R": "auto_grown_20260416060452889",
+          "D": 1,
+          "edge_index": 386
+        },
+        {
+          "pcl_id": 79,
+          "pcl_name": "col106",
+          "source_file": "relative_windings.json",
+          "kind": "relative",
+          "neighbor": "auto_grown_20260416060452889",
+          "from_ij": [
+            116.49651336669922,
+            74.53189086914062
+          ],
+          "to_ij": [
+            42.44163513183594,
+            7.167078018188477
+          ],
+          "from_point_id": 1530,
+          "to_point_id": 1529,
+          "from_zyx": [
+            14582.44921875,
+            4961.998046875,
+            4843.0751953125
+          ],
+          "to_zyx": [
+            14582.44921875,
+            4954.36669921875,
+            4823.99755859375
+          ],
+          "winding_delta": -1,
+          "raw_winding_delta": -1,
+          "pcl_unwrap_adjustment": 0,
+          "pcl_branch_delta": 0,
+          "P": "auto_grown_20260429215626691_sel_20260512_102916_8",
+          "R": "auto_grown_20260416060452889",
+          "D": -1,
+          "edge_index": 390
+        },
+        {
+          "pcl_id": 22,
+          "pcl_name": "col14",
+          "source_file": "relative_windings.json",
+          "kind": "relative",
+          "neighbor": "auto_grown_20260429215626691_sel_20260512_102916_8",
+          "from_ij": [
+            244.57598876953125,
+            230.87237548828125
+          ],
+          "to_ij": [
+            145.54527282714844,
+            83.83197784423828
+          ],
+          "from_point_id": 377,
+          "to_point_id": 378,
+          "from_zyx": [
+            14000.0,
+            4906.92236328125,
+            4620.0029296875
+          ],
+          "to_zyx": [
+            14000.0,
+            4914.5537109375,
+            4637.173828125
+          ],
+          "winding_delta": 1,
+          "raw_winding_delta": 1,
+          "pcl_unwrap_adjustment": 0,
+          "pcl_branch_delta": 0,
+          "P": "4424_david_masked",
+          "R": "auto_grown_20260429215626691_sel_20260512_102916_8",
+          "D": 1,
+          "edge_index": 126
+        },
+        {
+          "pcl_id": 81,
+          "pcl_name": "col108",
+          "source_file": "relative_windings.json",
+          "kind": "relative",
+          "neighbor": "auto_grown_20260416042041050",
+          "from_ij": [
+            218.368408203125,
+            273.2724609375
+          ],
+          "to_ij": [
+            59.09337615966797,
+            75.7656021118164
+          ],
+          "from_point_id": 1551,
+          "to_point_id": 1550,
+          "from_zyx": [
+            14591.3857421875,
+            4444.33154296875,
+            5235.00341796875
+          ],
+          "to_zyx": [
+            14592.021484375,
+            4446.2255859375,
+            5221.783203125
+          ],
+          "winding_delta": -1,
+          "raw_winding_delta": -1,
+          "pcl_unwrap_adjustment": 0,
+          "pcl_branch_delta": 0,
+          "P": "4424_david_masked",
+          "R": "auto_grown_20260416042041050",
+          "D": -2,
+          "edge_index": 146
+        }
+      ]
+    },
+    {
+      "cycle": [
+        {
+          "edge_index": 392,
+          "direction": 1,
+          "delta": -2,
+          "from": "auto_grown_20260429215626691_sel_20260512_102916_8",
+          "to": "auto_grown_20260416060452889"
+        },
+        {
+          "edge_index": 390,
+          "direction": -1,
+          "delta": 1,
+          "from": "auto_grown_20260416060452889",
+          "to": "auto_grown_20260429215626691_sel_20260512_102916_8"
+        }
+      ],
+      "integer_sum": -1,
+      "endpoint_bbox_xyz": [
+        [
+          4823.99755859375,
+          4452.83203125,
+          14208.1171875
+        ],
+        [
+          5175.6787109375,
+          4961.998046875,
+          14582.44921875
+        ]
+      ],
+      "source_edges": [
+        {
+          "pcl_id": 82,
+          "pcl_name": "col109",
+          "source_file": "relative_windings.json",
+          "kind": "relative",
+          "neighbor": "auto_grown_20260416060452889",
+          "from_ij": [
+            135.06236267089844,
+            45.886600494384766
+          ],
+          "to_ij": [
+            6.712952613830566,
+            5.678558826446533
+          ],
+          "from_point_id": 1561,
+          "to_point_id": 1560,
+          "from_zyx": [
+            14208.1171875,
+            4452.83203125,
+            5175.6787109375
+          ],
+          "to_zyx": [
+            14220.4853515625,
+            4456.23095703125,
+            5151.95849609375
+          ],
+          "winding_delta": -1,
+          "raw_winding_delta": -1,
+          "pcl_unwrap_adjustment": 0,
+          "pcl_branch_delta": 0,
+          "P": "auto_grown_20260429215626691_sel_20260512_102916_8",
+          "R": "auto_grown_20260416060452889",
+          "D": -2,
+          "edge_index": 392
+        },
+        {
+          "pcl_id": 79,
+          "pcl_name": "col106",
+          "source_file": "relative_windings.json",
+          "kind": "relative",
+          "neighbor": "auto_grown_20260416060452889",
+          "from_ij": [
+            116.49651336669922,
+            74.53189086914062
+          ],
+          "to_ij": [
+            42.44163513183594,
+            7.167078018188477
+          ],
+          "from_point_id": 1530,
+          "to_point_id": 1529,
+          "from_zyx": [
+            14582.44921875,
+            4961.998046875,
+            4843.0751953125
+          ],
+          "to_zyx": [
+            14582.44921875,
+            4954.36669921875,
+            4823.99755859375
+          ],
+          "winding_delta": -1,
+          "raw_winding_delta": -1,
+          "pcl_unwrap_adjustment": 0,
+          "pcl_branch_delta": 0,
+          "P": "auto_grown_20260429215626691_sel_20260512_102916_8",
+          "R": "auto_grown_20260416060452889",
+          "D": -1,
+          "edge_index": 390
+        }
+      ]
+    },
+    {
+      "cycle": [
+        {
+          "edge_index": 611,
+          "direction": 1,
+          "delta": 1,
+          "from": "auto_grown_20260521161130783_sel_20260521_161535_29",
+          "to": "auto_grown_20260521225553961_sel_20260521_225725_10"
+        },
+        {
+          "edge_index": 609,
+          "direction": -1,
+          "delta": -2,
+          "from": "auto_grown_20260521225553961_sel_20260521_225725_10",
+          "to": "auto_grown_20260521161130783_sel_20260521_161535_29"
+        }
+      ],
+      "integer_sum": -1,
+      "endpoint_bbox_xyz": [
+        [
+          5896.1630859375,
+          3907.99755859375,
+          10215.02734375
+        ],
+        [
+          5929.40234375,
+          3978.244384765625,
+          10357.9560546875
+        ]
+      ],
+      "source_edges": [
+        {
+          "pcl_id": 166,
+          "pcl_name": "col264",
+          "source_file": "relative_windings.json",
+          "kind": "relative",
+          "neighbor": "auto_grown_20260521225553961_sel_20260521_225725_10",
+          "from_ij": [
+            22.368993759155273,
+            6.2116241455078125
+          ],
+          "to_ij": [
+            23.90303611755371,
+            9.091262817382812
+          ],
+          "from_point_id": 2882,
+          "to_point_id": 2883,
+          "from_zyx": [
+            10357.9560546875,
+            3913.16259765625,
+            5903.53271484375
+          ],
+          "to_zyx": [
+            10357.9560546875,
+            3907.99755859375,
+            5915.154296875
+          ],
+          "winding_delta": 1,
+          "raw_winding_delta": 1,
+          "pcl_unwrap_adjustment": 0,
+          "pcl_branch_delta": 0,
+          "P": "auto_grown_20260521161130783_sel_20260521_161535_29",
+          "R": "auto_grown_20260521225553961_sel_20260521_225725_10",
+          "D": 1,
+          "edge_index": 611
+        },
+        {
+          "pcl_id": 138,
+          "pcl_name": "col208",
+          "source_file": "relative_windings.json",
+          "kind": "relative",
+          "neighbor": "auto_grown_20260521225553961_sel_20260521_225725_10",
+          "from_ij": [
+            29.808109283447266,
+            7.758092403411865
+          ],
+          "to_ij": [
+            31.111120223999023,
+            11.829422950744629
+          ],
+          "from_point_id": 2335,
+          "to_point_id": 2337,
+          "from_zyx": [
+            10215.02734375,
+            3978.244384765625,
+            5896.1630859375
+          ],
+          "to_zyx": [
+            10215.02734375,
+            3961.238037109375,
+            5929.40234375
+          ],
+          "winding_delta": 2,
+          "raw_winding_delta": 2,
+          "pcl_unwrap_adjustment": 0,
+          "pcl_branch_delta": 0,
+          "P": "auto_grown_20260521161130783_sel_20260521_161535_29",
+          "R": "auto_grown_20260521225553961_sel_20260521_225725_10",
+          "D": 2,
+          "edge_index": 609
+        }
+      ]
+    }
+  ],
+  "independent_checks": {
+    "before": {
+      "retained_graph_consistent": true,
+      "all_proposals_are_numeric_delta_edits": true,
+      "full_graph_after_proposed_delta_edits_consistent": true
+    },
+    "after": {
+      "retained_graph_consistent": true,
+      "all_proposals_are_numeric_delta_edits": true,
+      "full_graph_after_proposed_delta_edits_consistent": true
+    }
+  },
+  "observed_quality_improvement": false,
+  "scope": "Real sampled surfaces and original annotations; no planted defects. Both solver proposals are checked against every measured edge."
+}

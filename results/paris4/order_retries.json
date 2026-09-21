@@ -1,0 +1,82 @@
+{
+ "reason": "Retry unresolved cases after adding mathematically valid three-node cycle cuts; same data, margins, objectives and 60-second budget.",
+ "original": [
+  {
+   "cohort": "all_legacy_sites",
+   "defect": "sheet_switch",
+   "collection": "same:15",
+   "boundary": 36,
+   "direction": -1,
+   "alarm": null,
+   "localized": null,
+   "membership": "unknown",
+   "certainly_named": null,
+   "baseline_already_quarantined": false,
+   "solver_status": "solver_did_not_prove_optimum"
+  },
+  {
+   "cohort": "sample_new_only_sites",
+   "defect": "skipped_wrap",
+   "collection": "relative:93",
+   "boundary": 11,
+   "direction": -1,
+   "alarm": null,
+   "localized": null,
+   "membership": "unknown",
+   "certainly_named": null,
+   "baseline_already_quarantined": false,
+   "solver_status": "canonicalisation_incomplete"
+  },
+  {
+   "cohort": "sample_new_only_sites",
+   "defect": "skipped_wrap",
+   "collection": "relative:93",
+   "boundary": 24,
+   "direction": -1,
+   "alarm": null,
+   "localized": null,
+   "membership": "unknown",
+   "certainly_named": null,
+   "baseline_already_quarantined": false,
+   "solver_status": "solver_did_not_prove_optimum"
+  }
+ ],
+ "retry": [
+  {
+   "cohort": "all_legacy_sites",
+   "defect": "sheet_switch",
+   "collection": "same:15",
+   "boundary": 36,
+   "direction": -1,
+   "alarm": true,
+   "localized": true,
+   "membership": "certain",
+   "certainly_named": true,
+   "baseline_already_quarantined": false
+  },
+  {
+   "cohort": "sample_new_only_sites",
+   "defect": "skipped_wrap",
+   "collection": "relative:93",
+   "boundary": 11,
+   "direction": -1,
+   "alarm": true,
+   "localized": true,
+   "membership": "certain",
+   "certainly_named": true,
+   "baseline_already_quarantined": false
+  },
+  {
+   "cohort": "sample_new_only_sites",
+   "defect": "skipped_wrap",
+   "collection": "relative:93",
+   "boundary": 24,
+   "direction": -1,
+   "alarm": true,
+   "localized": false,
+   "membership": "excluded",
+   "certainly_named": false,
+   "baseline_already_quarantined": false
+  }
+ ]
+}

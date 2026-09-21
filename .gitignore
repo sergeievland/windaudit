@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+out/
+villa-check/
+
+# Public patch surfaces, fetched by scripts/fetch_data.py and pinned by SHA-256
+# in results/wide/dataset_manifest.json and results/scanspace_input_hashes.json.
+data/scanspace_wide/
+data/scanspace_band/
+data/scanspace_probe/

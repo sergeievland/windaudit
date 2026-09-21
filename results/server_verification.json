@@ -1,0 +1,27 @@
+{
+  "abs_winding.json": {
+    "sha256": "4e566731f7cbaf8f5ec843de687b3f72f4a784c40b587ebbaf544550902172c1",
+    "bytes": 20022,
+    "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHercParis4/abs_winding.json"
+  },
+  "same_windings.json": {
+    "sha256": "d9be52c5ebb42853f75f235241cbfd159738f6f34468bcd182523bc91dc91048",
+    "bytes": 1695752,
+    "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHercParis4/same_windings.json"
+  },
+  "relative_windings.json": {
+    "sha256": "a3243511d4eb91387a9b32f4dbff11514b08c3ae36e9b2a2b8222607b4883ac1",
+    "bytes": 773507,
+    "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHercParis4/relative_windings.json"
+  },
+  "umbilicus.json": {
+    "sha256": "c5f30b0d135c1d333f8170e592079a3d5a636e0071c0dcce560eecebb0ee2602",
+    "bytes": 12387,
+    "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHercParis4/umbilicus.json"
+  },
+  "spiral-scroll.json": {
+    "error": "HTTP Error 404: Not Found"
+  },
+  "checked_date": "2026-09-17",
+  "conclusion": "All four downloaded annotation/umbilicus files are byte-identical to the bundled inputs; spiral-scroll.json is absent (404)."
+}

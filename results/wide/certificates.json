@@ -1,0 +1,301 @@
+{
+  "rule": "Each step walks one equation 'gauge(to_patch) - gauge(from_patch) = contribution'. Add the contributions. A nonzero total proves that the equations on this walk cannot all hold simultaneously.",
+  "graph_equations": 645,
+  "certificates": [
+    {
+      "sum_of_contributions": -1,
+      "steps": [
+        {
+          "annotation": "col109",
+          "source_file": "relative_windings.json",
+          "point_ids": [
+            1559,
+            1560
+          ],
+          "from_patch": "auto_grown_20260416042041050",
+          "to_patch": "auto_grown_20260416060452889",
+          "walked": "stored",
+          "contribution": 1,
+          "annotation_winding_difference": 1,
+          "point_xyz": [
+            [
+              5119.82080078125,
+              4460.83544921875,
+              14242.12890625
+            ],
+            [
+              5151.95849609375,
+              4456.23095703125,
+              14220.4853515625
+            ]
+          ],
+          "attachment": [
+            {
+              "patch": "auto_grown_20260416042041050",
+              "distance_voxels": 1.302
+            },
+            {
+              "patch": "auto_grown_20260416060452889",
+              "distance_voxels": 1.504
+            }
+          ]
+        },
+        {
+          "annotation": "col106",
+          "source_file": "relative_windings.json",
+          "point_ids": [
+            1530,
+            1529
+          ],
+          "from_patch": "auto_grown_20260416060452889",
+          "to_patch": "auto_grown_20260429215626691_sel_20260512_102916_8",
+          "walked": "reversed",
+          "contribution": 1,
+          "annotation_winding_difference": 1,
+          "point_xyz": [
+            [
+              4843.0751953125,
+              4961.998046875,
+              14582.44921875
+            ],
+            [
+              4823.99755859375,
+              4954.36669921875,
+              14582.44921875
+            ]
+          ],
+          "attachment": [
+            {
+              "patch": "auto_grown_20260429215626691_sel_20260512_102916_8",
+              "distance_voxels": 1.0
+            },
+            {
+              "patch": "auto_grown_20260416060452889",
+              "distance_voxels": 1.432
+            }
+          ]
+        },
+        {
+          "annotation": "col14",
+          "source_file": "relative_windings.json",
+          "point_ids": [
+            377,
+            378
+          ],
+          "from_patch": "auto_grown_20260429215626691_sel_20260512_102916_8",
+          "to_patch": "4424_david_masked",
+          "walked": "reversed",
+          "contribution": -1,
+          "annotation_winding_difference": -1,
+          "point_xyz": [
+            [
+              4620.0029296875,
+              4906.92236328125,
+              14000.0
+            ],
+            [
+              4637.173828125,
+              4914.5537109375,
+              14000.0
+            ]
+          ],
+          "attachment": [
+            {
+              "patch": "4424_david_masked",
+              "distance_voxels": 1.311
+            },
+            {
+              "patch": "auto_grown_20260429215626691_sel_20260512_102916_8",
+              "distance_voxels": 1.814
+            }
+          ]
+        },
+        {
+          "annotation": "col108",
+          "source_file": "relative_windings.json",
+          "point_ids": [
+            1551,
+            1550
+          ],
+          "from_patch": "4424_david_masked",
+          "to_patch": "auto_grown_20260416042041050",
+          "walked": "stored",
+          "contribution": -2,
+          "annotation_winding_difference": -1,
+          "point_xyz": [
+            [
+              5235.00341796875,
+              4444.33154296875,
+              14591.3857421875
+            ],
+            [
+              5221.783203125,
+              4446.2255859375,
+              14592.021484375
+            ]
+          ],
+          "attachment": [
+            {
+              "patch": "4424_david_masked",
+              "distance_voxels": 0.439
+            },
+            {
+              "patch": "auto_grown_20260416042041050",
+              "distance_voxels": 0.995
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sum_of_contributions": -1,
+      "steps": [
+        {
+          "annotation": "col109",
+          "source_file": "relative_windings.json",
+          "point_ids": [
+            1561,
+            1560
+          ],
+          "from_patch": "auto_grown_20260429215626691_sel_20260512_102916_8",
+          "to_patch": "auto_grown_20260416060452889",
+          "walked": "stored",
+          "contribution": -2,
+          "annotation_winding_difference": -1,
+          "point_xyz": [
+            [
+              5175.6787109375,
+              4452.83203125,
+              14208.1171875
+            ],
+            [
+              5151.95849609375,
+              4456.23095703125,
+              14220.4853515625
+            ]
+          ],
+          "attachment": [
+            {
+              "patch": "auto_grown_20260429215626691_sel_20260512_102916_8",
+              "distance_voxels": 0.215
+            },
+            {
+              "patch": "auto_grown_20260416060452889",
+              "distance_voxels": 1.504
+            }
+          ]
+        },
+        {
+          "annotation": "col106",
+          "source_file": "relative_windings.json",
+          "point_ids": [
+            1530,
+            1529
+          ],
+          "from_patch": "auto_grown_20260416060452889",
+          "to_patch": "auto_grown_20260429215626691_sel_20260512_102916_8",
+          "walked": "reversed",
+          "contribution": 1,
+          "annotation_winding_difference": 1,
+          "point_xyz": [
+            [
+              4843.0751953125,
+              4961.998046875,
+              14582.44921875
+            ],
+            [
+              4823.99755859375,
+              4954.36669921875,
+              14582.44921875
+            ]
+          ],
+          "attachment": [
+            {
+              "patch": "auto_grown_20260429215626691_sel_20260512_102916_8",
+              "distance_voxels": 1.0
+            },
+            {
+              "patch": "auto_grown_20260416060452889",
+              "distance_voxels": 1.432
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sum_of_contributions": -1,
+      "steps": [
+        {
+          "annotation": "col264",
+          "source_file": "relative_windings.json",
+          "point_ids": [
+            2882,
+            2883
+          ],
+          "from_patch": "auto_grown_20260521161130783_sel_20260521_161535_29",
+          "to_patch": "auto_grown_20260521225553961_sel_20260521_225725_10",
+          "walked": "stored",
+          "contribution": 1,
+          "annotation_winding_difference": 1,
+          "point_xyz": [
+            [
+              5903.53271484375,
+              3913.16259765625,
+              10357.9560546875
+            ],
+            [
+              5915.154296875,
+              3907.99755859375,
+              10357.9560546875
+            ]
+          ],
+          "attachment": [
+            {
+              "patch": "auto_grown_20260521161130783_sel_20260521_161535_29",
+              "distance_voxels": 0.754
+            },
+            {
+              "patch": "auto_grown_20260521225553961_sel_20260521_225725_10",
+              "distance_voxels": 1.798
+            }
+          ]
+        },
+        {
+          "annotation": "col208",
+          "source_file": "relative_windings.json",
+          "point_ids": [
+            2335,
+            2337
+          ],
+          "from_patch": "auto_grown_20260521225553961_sel_20260521_225725_10",
+          "to_patch": "auto_grown_20260521161130783_sel_20260521_161535_29",
+          "walked": "reversed",
+          "contribution": -2,
+          "annotation_winding_difference": -2,
+          "point_xyz": [
+            [
+              5896.1630859375,
+              3978.244384765625,
+              10215.02734375
+            ],
+            [
+              5929.40234375,
+              3961.238037109375,
+              10215.02734375
+            ]
+          ],
+          "attachment": [
+            {
+              "patch": "auto_grown_20260521161130783_sel_20260521_161535_29",
+              "distance_voxels": 1.671
+            },
+            {
+              "patch": "auto_grown_20260521225553961_sel_20260521_225725_10",
+              "distance_voxels": 0.601
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "patch": "same_wrap001085_lasagna",
+    "valid_quads": 4672,
+    "components": 1,
+    "edges": 18227,
+    "inconsistent_edges": 0,
+    "max_abs_residual": 0,
+    "invalid_diagonal_midpoints": 1
+  },
+  {
+    "patch": "same_wrap002019_lasagna",
+    "valid_quads": 5104,
+    "components": 1,
+    "edges": 19948,
+    "inconsistent_edges": 0,
+    "max_abs_residual": 0,
+    "invalid_diagonal_midpoints": 14
+  },
+  {
+    "patch": "same_wrap002204_lasagna",
+    "valid_quads": 3961,
+    "components": 1,
+    "edges": 15454,
+    "inconsistent_edges": 0,
+    "max_abs_residual": 0,
+    "invalid_diagonal_midpoints": 11
+  },
+  {
+    "patch": "same_wrap002436_lasagna",
+    "valid_quads": 3597,
+    "components": 1,
+    "edges": 14015,
+    "inconsistent_edges": 0,
+    "max_abs_residual": 0,
+    "invalid_diagonal_midpoints": 0
+  },
+  {
+    "patch": "same_wrap002603_lasagna",
+    "valid_quads": 5556,
+    "components": 1,
+    "edges": 21715,
+    "inconsistent_edges": 0,
+    "max_abs_residual": 0,
+    "invalid_diagonal_midpoints": 10
+  },
+  {
+    "patch": "same_wrap002606_lasagna",
+    "valid_quads": 5906,
+    "components": 1,
+    "edges": 23089,
+    "inconsistent_edges": 0,
+    "max_abs_residual": 0,
+    "invalid_diagonal_midpoints": 9
+  }
+]

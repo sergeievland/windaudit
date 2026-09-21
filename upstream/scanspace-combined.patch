@@ -1,0 +1,560 @@
+--- a/spiral-fitting/find_inconsistent_windings.py
++++ b/spiral-fitting/find_inconsistent_windings.py
+@@ -672,12 +672,9 @@
+     winding(to) - winding(from) (or None if unmeasurable). Returns a result dict; an
+     edge with z_e == 1 is one to change, with its suggested corrected delta.
+ 
+-    `allowed_edge_keys`, when given, restricts the model to that set of edge keys
+-    (`(pcl_id, frozenset((from_point_id, to_point_id)))`) -- pass the edges lying on the
+-    inconsistent fundamental cycles so the solve only touches edges that can actually
+-    close a broken loop. Edges on only-consistent cycles cannot help and only add
+-    gauge freedom (a hub patch's potential can then float to its box bound, producing
+-    huge spurious residuals), so excluding them keeps the suggestions sane and tight.
++    `allowed_edge_keys`, when given, restricts which edges may change, not
++    which consistency equations are retained. All measurable reached edges
++    remain in the model, including edges on previously consistent cycles.
+     """
+     # --- collect unique undirected rel edges among reached patches ---
+     strip_memo = {}
+@@ -700,8 +697,6 @@
+             if R not in reached:
+                 continue
+             key = (e['pcl_id'], frozenset((e['from_point_id'], e['to_point_id'])))
+-            if allowed_edge_keys is not None and key not in allowed_edge_keys:
+-                continue
+             if key in seen:
+                 continue
+             seen.add(key)  # also blocks the reverse-direction copy from R's list
+@@ -712,6 +707,7 @@
+                 continue
+             edges.append({
+                 'P': P, 'R': R,
++                'editable': allowed_edge_keys is None or key in allowed_edge_keys,
+                 'D': int(e['winding_delta'] + sP - sR),
+                 'pcl_id': e['pcl_id'], 'pcl_name': e['pcl_name'], 'source_file': e['source_file'],
+                 'kind': e.get('kind'),
+@@ -731,10 +727,10 @@
+     node_idx = {p: i for i, p in enumerate(nodes)}
+     n, m = len(nodes), len(edges)
+ 
+-    # BFS gives a feasible labelling u0_p = -acc_p (acc = winding(seed) - winding(entry)),
+-    # so the box only needs to span the BFS winding range plus a small correction margin.
+-    u0 = np.array([-reached[p]['acc'] for p in nodes], dtype=float)
+-    big = float(np.max(np.abs(u0 - u0.mean())) + m + 10)  # generous, but contains u0
++    # Every consistent retained component admits potentials obtained along a
++    # simple path, after fixing one root at zero. This bound contains an
++    # optimum independently of the (possibly inconsistent) BFS accumulation.
++    big = float(sum(abs(e['D']) for e in edges) + 1)
+     M = 2.0 * big + max(abs(e['D']) for e in edges) + 1.0
+ 
+     # constraints: for edge i (u_R - u_P) - D_i <=  M z_i   and  -(...) <= -... + M z_i
+@@ -748,18 +744,14 @@
+     A = coo_matrix((vals, (rows, cols)), shape=(2 * m, n + m)).tocsr()
+     constraints = LinearConstraint(A, -np.inf, np.array(ub))
+ 
+-    lb = np.concatenate([u0 - big, np.zeros(m)])
+-    hi = np.concatenate([u0 + big, np.ones(m)])
+-    if 'seed' not in node_idx:  # gauge-fix one node to break the per-component constant
+-        seed_node = nodes[int(np.argmin(np.abs(u0)))]
+-    else:
+-        seed_node = 'seed'
+-    si = node_idx[seed_node]
+-    lb[si] = hi[si] = u0[si]
++    lb = np.concatenate([np.full(n, -big), np.zeros(m)])
++    hi = np.concatenate([np.full(n, big),
++                         np.array([float(e['editable']) for e in edges])])
++    lb[0] = hi[0] = 0.0
+ 
+     c = np.concatenate([np.zeros(n), np.ones(m)])
+     res = milp(c, constraints=constraints, integrality=np.ones(n + m),
+-               bounds=Bounds(lb, hi), options={'time_limit': time_limit})
++               bounds=Bounds(lb, hi), options={'time_limit': time_limit, 'mip_rel_gap': 0.0})
+ 
+     out_edges = []
+     if res.x is not None:
+@@ -1281,11 +1273,8 @@
+ 
+     loop_cycles = build_loop_cycles(loops, tree_edge_by_child, loop_patch_strip_delta)
+ 
+-    # Edges lying on the inconsistent fundamental cycles (each cycle's tree-path steps plus
+-    # its closing edge), keyed exactly as solve_min_edge_fix keys edges. Only these edges
+-    # can close a broken loop, so the MILP is restricted to them -- edges on only-consistent
+-    # cycles add gauge freedom that lets a hub patch's potential float to its box bound and
+-    # produce huge spurious residuals.
++    # Allow edits on inconsistent fundamental cycles, while retaining all
++    # other reached-edge equations so a repair cannot break a consistent cycle.
+     def _edge_key(step):
+         return (step['rel_pcl_id'], frozenset((step['from_point_id'], step['to_point_id'])))
+     inconsistent_cycle_edge_keys = set()
+--- /dev/null
++++ b/spiral-fitting/scanspace_transport.py
+@@ -0,0 +1,211 @@
++"""CPU-only theta=0 transport on tifxyz valid-quad paths.
++
++This is an additive experiment, never used by the legacy annotation exporter.
++Routing, float32 polyline sampling and bilinear interpolation follow villa
++2dcfaf6a08c3bc796fde726c4fa32050c8fc90e7. Scan-space theta is not a claim
++of equivalence to every fitted deformation. Test path independence first.
++"""
++from dataclasses import dataclass, field
++from pathlib import Path
++import json
++import numpy as np
++from scipy.interpolate import interp1d
++from scipy.ndimage import distance_transform_edt
++from scipy.sparse import coo_matrix
++from scipy.sparse.csgraph import dijkstra
++from scipy.sparse.csgraph import breadth_first_order
++
++
++def load_umbilicus(path):
++    points = sorted(json.loads(Path(path).read_text())['control_points'],
++                    key=lambda p: p['z'])
++    return interp1d(np.asarray([p['z'] for p in points], dtype=np.float32),
++                    np.asarray([[p['y'], p['x']] for p in points], dtype=np.float32),
++                    axis=0, fill_value='extrapolate')
++
++
++def theta_at(xyz, umbilicus):
++    xyz = np.asarray(xyz, dtype=np.float32)
++    yx = xyz[..., 1::-1] - umbilicus(xyz[..., 2])
++    if not np.isfinite(yx).all() or np.any(np.linalg.norm(yx, axis=-1) == 0):
++        raise ValueError('Undefined scan-space angle')
++    return np.arctan2(yx[..., 0], yx[..., 1]) % (2 * np.pi)
++
++
++def crossing_delta(theta):
++    theta = np.asarray(theta)
++    if not np.isfinite(theta).all():
++        raise ValueError('Non-finite angle')
++    differences = np.diff(theta)
++    return int(np.count_nonzero(differences < -np.pi)
++               - np.count_nonzero(differences > np.pi))
++
++
++def polyline_ijs(points, step_size=1.0):
++    if not np.isfinite(step_size) or step_size <= 0:
++        raise ValueError('step_size must be finite and positive')
++    points = np.asarray(points, dtype=np.float32)
++    segments = []
++    for a, b in zip(points, points[1:]):
++        n = max(1, int(np.ceil(float(np.linalg.norm(b - a)) / step_size))) + 1
++        t = np.linspace(0, 1, n, dtype=np.float32)[:, None]
++        segment = a[None] * (1 - t) + b[None] * t
++        segments.append(segment[1:] if segments else segment)
++    return np.concatenate(segments).astype(np.float32) if segments else points.copy()
++
++
++@dataclass
++class ScanPatch:
++    xyz: np.ndarray
++    metadata: dict = field(default_factory=dict)
++
++    def __post_init__(self):
++        self.xyz = np.asarray(self.xyz, dtype=np.float32)
++        if self.xyz.ndim != 3 or self.xyz.shape[-1] != 3:
++            raise ValueError('Expected H x W x 3 coordinates')
++        valid = np.any(self.xyz != -1, axis=-1)
++        self.valid_quad = (valid[:-1, :-1] & valid[1:, :-1]
++                           & valid[:-1, 1:] & valid[1:, 1:])
++
++    @classmethod
++    def load(cls, directory):
++        # Pillow is only needed for the optional real-patch experiment.
++        from PIL import Image
++        directory = Path(directory)
++        xyz = np.stack([np.asarray(Image.open(directory / (c + '.tif')))
++                        for c in 'xyz'], axis=-1).astype(np.float32)
++        if (directory / 'mask.tif').exists():
++            mask = np.asarray(Image.open(directory / 'mask.tif'))
++            if mask.ndim == 3:
++                mask = mask[..., 0]
++            xyz[mask == 0] = -1
++        return cls(xyz, json.loads((directory / 'meta.json').read_text()))
++
++    def lift(self, ij):
++        ij = np.asarray(ij, dtype=np.float32)
++        i, j = np.floor(ij).astype(int).T
++        h, w = self.valid_quad.shape
++        valid = (i >= 0) & (j >= 0) & (i < h) & (j < w)
++        valid[valid] &= self.valid_quad[i[valid], j[valid]]
++        result = np.full((len(ij), 3), -1, dtype=np.float32)
++        ii, jj = i[valid], j[valid]
++        di, dj = (ij[valid] - np.floor(ij[valid])).T
++        tl, tr = self.xyz[ii, jj], self.xyz[ii, jj + 1]
++        bl, br = self.xyz[ii + 1, jj], self.xyz[ii + 1, jj + 1]
++        top = tl + (tr - tl) * dj[:, None]
++        bottom = bl + (br - bl) * dj[:, None]
++        result[valid] = top + (bottom - top) * di[:, None]
++        return result, valid
++
++
++class PatchGraph:
++    def __init__(self, patch, medial_weight=4.0, random_seed=None):
++        if medial_weight < 0:
++            raise ValueError('Negative medial weight')
++        self.patch = patch
++        v = patch.valid_quad
++        self.ii, self.jj = np.nonzero(v)
++        self.n = len(self.ii)
++        if not self.n:
++            raise ValueError('Patch has no valid quads')
++        self.centres = np.column_stack((self.ii, self.jj)).astype(np.float32) + .5
++        self.ids = np.full(v.shape, -1, dtype=np.int64)
++        self.ids[v] = np.arange(self.n)
++        dt = distance_transform_edt(np.pad(v, 1))[1:-1, 1:-1].astype(np.float32)
++        rows, cols, data = [], [], []
++        rng = np.random.default_rng(random_seed)
++        for di, dj in [(-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)]:
++            ni, nj = self.ii + di, self.jj + dj
++            ok = (ni >= 0) & (nj >= 0) & (ni < v.shape[0]) & (nj < v.shape[1])
++            src = np.flatnonzero(ok)
++            dst = self.ids[ni[ok], nj[ok]]
++            ok = dst >= 0
++            src, dst = src[ok], dst[ok]
++            weights = np.hypot(di, dj) * (1 + medial_weight / np.maximum(dt[self.ii[dst], self.jj[dst]], 1))
++            if random_seed is not None:
++                weights = weights * np.exp(rng.uniform(-2, 2, len(weights)))
++            rows.extend(src); cols.extend(dst); data.extend(weights)
++        self.csr = coo_matrix((data, (rows, cols)), shape=(self.n, self.n)).tocsr()
++        self.cache = {}
++
++    def nearest_node(self, ij):
++        h, w = self.ids.shape
++        qi, qj = np.clip(np.floor(ij).astype(int), [0, 0], [h - 1, w - 1])
++        if self.ids[qi, qj] >= 0:
++            return int(self.ids[qi, qj])
++        return int(np.argmin((self.ii - qi) ** 2 + (self.jj - qj) ** 2))
++
++    def route(self, start, end):
++        a, b = self.nearest_node(start), self.nearest_node(end)
++        if a not in self.cache:
++            self.cache[a] = dijkstra(self.csr, directed=True, indices=a,
++                                      return_predecessors=True)[1]
++        pred = self.cache[a]
++        route = [b]
++        while route[-1] != a:
++            previous = int(pred[route[-1]])
++            if previous < 0:
++                return None
++            route.append(previous)
++        return self.centres[route[::-1]]
++
++
++def path_transport(patch, points, umbilicus, step_size=1.0):
++    ij = polyline_ijs(points, step_size)
++    xyz, valid = patch.lift(ij)
++    if valid.sum() < 2:
++        return None
++    return {'delta_windings': crossing_delta(theta_at(xyz[valid], umbilicus)),
++            'strip_num_points': int(valid.sum()),
++            'strip_num_invalid_dropped': int((~valid).sum())}
++
++
++def strip_winding_delta(graph, from_ij, to_ij, umbilicus, step_size=1.0):
++    centres = graph.route(from_ij, to_ij)
++    if centres is None:
++        return None
++    result = path_transport(graph.patch, np.vstack([from_ij, centres, to_ij]),
++                            umbilicus, step_size)
++    if result is not None:
++        result['strip_num_path_quads'] = len(centres)
++    return result
++
++
++def audit_edge_integrability(patch, umbilicus):
++    """Check every fundamental cycle of the sampled quad-centre graph.
++
++    Fixed step 1: orthogonal centre edges have endpoints only, diagonals
++    include the shared corner. Match upstream's invalid-sample dropping.
++    A zero residual on every edge certifies all centre-graph closed walks
++    for this sampling rule, including holes and disconnected components.
++    """
++    graph = PatchGraph(patch)
++    centres=graph.centres
++    xyz,valid=patch.lift(centres)
++    assert valid.all()
++    theta=theta_at(xyz,umbilicus)
++    row,col=graph.csr.nonzero()
++    keep=row<col;row=row[keep];col=col[keep]
++    d=theta[col]-theta[row]
++    delta=(d < -np.pi).astype(int)-(d > np.pi).astype(int)
++    diagonal=np.all(centres[row]!=centres[col],axis=1)
++    indices=np.flatnonzero(diagonal)
++    mid=(centres[row[indices]]+centres[col[indices]])/2
++    xyz,valid=patch.lift(mid)
++    k=indices[valid];tm=theta_at(xyz[valid],umbilicus)
++    d1=tm-theta[row[k]];d2=theta[col[k]]-tm
++    delta[k]=(d1 < -np.pi).astype(int)-(d1 > np.pi).astype(int)+(d2 < -np.pi).astype(int)-(d2 > np.pi).astype(int)
++    dg=coo_matrix((np.r_[delta,-delta],(np.r_[row,col],np.r_[col,row])),shape=(graph.n,graph.n)).tocsr()
++    potentials=np.full(graph.n, np.iinfo(np.int64).max,dtype=np.int64)
++    sentinel=np.iinfo(np.int64).max
++    components=0
++    for start in range(graph.n):
++        if potentials[start]!=sentinel:continue
++        components+=1;order,pred=breadth_first_order(graph.csr,start,directed=False)
++        potentials[start]=0
++        for node in order[1:]:potentials[node]=potentials[pred[node]]+int(dg[pred[node],node])
++    residual=potentials[col]-potentials[row]-delta
++    return {'valid_quads':graph.n,'components':components,'edges':len(row),
++            'inconsistent_edges':int(np.count_nonzero(residual)),
++            'max_abs_residual':int(np.max(np.abs(residual))) if len(residual) else 0,
++            'invalid_diagonal_midpoints':int((~valid).sum())}
+--- /dev/null
++++ b/spiral-fitting/scanspace_surface.py
+@@ -0,0 +1,54 @@
++"""CPU projection onto actual patch faces, with conservative spatial pruning.
++
++Uses villa Patch.project's two triangles per valid quad and its barycentric
++region tests. This is the documented brute-force fallback geometry, not a
++claim of bit equivalence to the optional vc_spiral native surface index.
++"""
++import numpy as np
++from scipy.spatial import cKDTree
++
++
++class Surface:
++    def __init__(self, patch):
++        i,j=np.nonzero(patch.valid_quad)
++        xyz=patch.xyz
++        self.triangles=np.concatenate([
++            np.stack([xyz[i+1,j],xyz[i,j],xyz[i,j+1]],axis=1),
++            np.stack([xyz[i+1,j],xyz[i,j+1],xyz[i+1,j+1]],axis=1)])
++        self.bases=np.tile(np.column_stack([i,j]),(2,1))
++        self.types=np.repeat([0,1],len(i))
++        self.centres=self.triangles.mean(axis=1)
++        self.radii=np.linalg.norm(self.triangles-self.centres[:,None],axis=2).max(axis=1)
++        self.tree=cKDTree(self.centres)
++        self.max_radius=float(self.radii.max())
++
++    def project(self, point, tolerance=2.5):
++        point=np.asarray(point,dtype=np.float32)
++        ids=np.asarray(sorted(self.tree.query_ball_point(point,self.max_radius+tolerance+1e-3)),dtype=int)
++        if not len(ids):return None
++        ok=np.linalg.norm(self.centres[ids]-point,axis=1)<=self.radii[ids]+tolerance+1e-3
++        ids=ids[ok]
++        if not len(ids):return None
++        a,b,c=self.triangles[ids].transpose(1,0,2);ab=b-a;ac=c-a
++        ap=point-a;bp=point-b;cp=point-c
++        dot=lambda x,y:np.sum(x*y,axis=-1)
++        d1=dot(ap,ab);d2=dot(ap,ac);d3=dot(bp,ab);d4=dot(bp,ac);d5=dot(cp,ab);d6=dot(cp,ac)
++        vc=d1*d4-d3*d2;vb=d5*d2-d1*d6;va=d3*d6-d5*d4
++        ma=(d1<=0)&(d2<=0);mb=(d3>=0)&(d4<=d3);mab=(vc<=0)&(d1>=0)&(d3<=0)
++        mc=(d6>=0)&(d5<=d6);mac=(vb<=0)&(d2>=0)&(d6<=0);mbc=(va<=0)&((d4-d3)>=0)&((d5-d6)>=0)
++        mf=~(ma|mb|mab|mc|mac|mbc);bary=np.zeros((len(ids),3),np.float32);eps=1e-8
++        bary[ma,0]=1;bary[mb,1]=1
++        v=d1/(d1-d3+eps);bary[mab,0]=1-v[mab];bary[mab,1]=v[mab]
++        bary[mc,2]=1
++        w=d2/(d2-d6+eps);bary[mac,0]=1-w[mac];bary[mac,2]=w[mac]
++        w=(d4-d3)/((d4-d3)+(d5-d6)+eps);bary[mbc,1]=1-w[mbc];bary[mbc,2]=w[mbc]
++        denom=va+vb+vc+eps;v=vb/denom;w=vc/denom
++        bary[mf,1]=v[mf];bary[mf,2]=w[mf];bary[mf,0]=1-v[mf]-w[mf]
++        nearest=bary[:,0,None]*a+bary[:,1,None]*b+bary[:,2,None]*c
++        dist=np.linalg.norm(nearest-point,axis=1);k=int(np.argmin(dist))
++        if dist[k]>tolerance:return None
++        face=ids[k];u,v,w=bary[k]
++        offset=[u,w] if self.types[face]==0 else [u+w,v+w]
++        ij=self.bases[face]+offset
++        return {'ij':np.asarray(ij,np.float32).tolist(),'distance':float(dist[k]),
++                'face_id':int(face)}
+--- /dev/null
++++ b/spiral-fitting/audit_scanspace_transport.py
+@@ -0,0 +1,198 @@
++"""Build a CPU real-patch graph and compare the pinned upstream solver.
++
++Usage: python scripts/scanspace_real_graph.py PATCHES BEFORE.py AFTER.py OUTDIR
++Only explicitly present patch folders are read. No network access.
++"""
++import ast
++from collections import deque
++import json
++from pathlib import Path
++import sys
++import time
++import numpy as np
++from scipy.ndimage import binary_erosion
++from scipy.optimize import Bounds, LinearConstraint, milp
++from scipy.sparse import coo_matrix
++sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
++from scanspace_transport import ScanPatch, PatchGraph, load_umbilicus, theta_at, strip_winding_delta, audit_edge_integrability
++from scanspace_surface import Surface
++
++ROOT=Path(__file__).resolve().parents[1]
++def serial(x):
++    if isinstance(x,np.ndarray):return x.tolist()
++    if isinstance(x,np.generic):return x.item()
++    if isinstance(x,set):return sorted(x)
++    raise TypeError(type(x).__name__)
++
++def extract(path,names,extra=None):
++    tree=ast.parse(Path(path).read_text())
++    body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in names]
++    assert {n.name for n in body}==set(names)
++    ns=dict(np=np,Bounds=Bounds,LinearConstraint=LinearConstraint,milp=milp,
++            coo_matrix=coo_matrix,_to_py=lambda x:np.asarray(x).tolist())
++    ns.update(extra or {})
++    exec(compile(ast.Module(body=body,type_ignores=[]),str(path),'exec'),ns)
++    return ns
++
++class Chain:
++    def __init__(self,p):self.p=p
++    def iter_chain(self):return iter(sorted(self.p['points'].values(),key=lambda p:p['id']))
++
++def edge_key(e):return (e['pcl_id'],frozenset((e['from_point_id'],e['to_point_id'])))
++def check(edges,removed=()):
++    adj={}
++    for k,e in enumerate(edges):
++        if k in removed:continue
++        a,b,d=e['P'],e['R'],e['D'];adj.setdefault(a,[]).append((b,d,k));adj.setdefault(b,[]).append((a,-d,k))
++    pot={};parent={};bad=[];allowed=set()
++    for start in sorted(adj):
++        if start in pot:continue
++        pot[start]=0;parent[start]=None;q=deque([start])
++        while q:
++            a=q.popleft()
++            for b,d,k in adj[a]:
++                if b not in pot:pot[b]=pot[a]+d;parent[b]=(a,k);q.append(b)
++                elif pot[b]!=pot[a]+d:
++                    if k in bad:continue
++                    bad.append(k);allowed.add(k)
++                    ancestors={a:[]};n=a;path=[]
++                    while parent[n] is not None:
++                        n,eid=parent[n];path=path+[eid];ancestors[n]=path
++                    n=b;path=[]
++                    while n not in ancestors:
++                        n,eid=parent[n];path.append(eid)
++                    allowed.update(path);allowed.update(ancestors[n])
++    return {'consistent':not bad,'inconsistent_non_tree_edges':len(bad),'potentials':pot},allowed
++
++def main(directory,before,after,outdir,inputs=None):
++    outdir=Path(outdir);outdir.mkdir(parents=True,exist_ok=True)
++    inputs=Path(inputs) if inputs is not None else ROOT/'data/paris4'
++    umbilicus=load_umbilicus(inputs/'umbilicus.json')
++    patches={};surfaces={};areas={};patch_report=[];rejected=[]
++    for folder in sorted(Path(directory).iterdir()):
++        if not folder.is_dir():continue
++        patch=ScanPatch.load(folder);valid=np.any(patch.xyz!=-1,axis=-1)
++        cells=int(patch.metadata.get('spiral_patch_erode_cells',1))
++        if cells>0:patch.xyz[~binary_erosion(valid,iterations=cells,border_value=0)]=-1;patch.__post_init__()
++        z=patch.xyz[...,2];in_band=(z>=12417)&(z<12419)&np.any(patch.xyz!=-1,axis=-1)
++        # Select by actual continuous quad extent as well as vertex hits: a
++        # two-voxel window can fall between grid rows. Record this explicitly.
++        v=patch.valid_quad
++        corners=np.stack([z[:-1,:-1],z[1:,:-1],z[:-1,1:],z[1:,1:]])
++        crosses=v&(corners.min(axis=0)<12419)&(corners.max(axis=0)>=12417)
++        if not crosses.any():
++            rejected.append({'id':folder.name,'reason':'No valid quad intersects the band after mask handling and erosion.'})
++            continue
++        patches[folder.name]=patch;surfaces[folder.name]=Surface(patch)
++        areas[folder.name]=float(v.sum()/np.prod(patch.metadata['scale']))
++        patch_report.append({'id':folder.name,'valid_quads':int(v.sum()),'band_crossing_quads':int(crosses.sum()),'has_vertex_in_band':bool(in_band.any()),'erosion_cells':cells})
++    print('loaded surfaces',len(patches),flush=True)
++    gate=[]
++    for name,patch in patches.items():
++        r={'patch':name,**audit_edge_integrability(patch,umbilicus)};gate.append(r)
++        print('edge gate',name,r['inconsistent_edges'],flush=True)
++    (outdir/'band_transport_gate.json').write_text(json.dumps(gate,indent=2)+'\n')
++    if any(r['inconsistent_edges'] for r in gate):
++        raise SystemExit('STOP: scan-space path independence failed on selected real patches')
++    collections=[];points=[]
++    for fn in ['abs_winding.json','relative_windings.json','same_windings.json']:
++        raw=json.loads((inputs/fn).read_text())['collections']
++        for cid,pcl in sorted(raw.items(),key=lambda item:int(item[0])):
++            pp={}
++            for pid,p in sorted(pcl['points'].items(),key=lambda item:int(item[0])):
++                pp[int(pid)]={**p,'id':int(pid),'zyx':np.asarray(p['p'],np.float32)[::-1],
++                              'winding_annotation':float(p['wind_a']) if p.get('wind_a') is not None else float('nan')}
++            c={**pcl,'points':pp,'source_file':fn,'source_collection_id':cid}
++            c['metadata']=dict(c.get('metadata',{}))
++            if fn=='abs_winding.json':c['metadata']['winding_is_absolute']=True
++            collections.append(c);points.extend(pp.values())
++    all_hits={};start=time.perf_counter()
++    for n,p in enumerate(points):
++        hits=[]
++        for name,surface in surfaces.items():
++            hit=surface.project(p['p'],2.5)
++            if hit is not None:hits.append({**hit,'id':name,'area':areas[name]})
++        if hits:
++            hits.sort(key=lambda h:(-h['area'],h['distance'],h['id']))
++            p['on_patch']=hits[0];all_hits[id(p)]=hits
++        if (n+1)%1000==0:print('projected',n+1,flush=True)
++    linking_seconds=time.perf_counter()-start
++    cross=[]
++    for c in collections:
++        attached=sum('on_patch' in p for p in c['points'].values())
++        if attached<2 and not c['metadata'].get('winding_is_absolute'):continue
++        annotated=[p for p in c['points'].values() if np.isfinite(p['winding_annotation'])]
++        c['has_winding_annotations']=bool(annotated)
++        if annotated:c['points']={k:p for k,p in c['points'].items() if np.isfinite(p['winding_annotation'])}
++        else:
++            for p in c['points'].values():p['winding_annotation']=0.0
++        c['chain']=Chain(c);cross.append(c)
++    def tour_adjustments(transform,dr,tour):
++        th=theta_at(np.asarray([p['p'] for p in tour]),umbilicus);d=np.diff(th)
++        return np.r_[0,np.cumsum((d>np.pi).astype(int)-(d < -np.pi).astype(int))]
++    ns=extract(before,['classify_pcl','build_rel_adjacency'],{'_tour_unwrap_adjustments':tour_adjustments})
++    # Upstream already uses list-position identities; there is no collision fix.
++    adjacency=ns['build_rel_adjacency'](dict(enumerate(cross)),patches,None,None)
++    graphs={};memo={}
++    def strip(pid,a,b):
++        key=(pid,tuple(a),tuple(b))
++        if key not in memo:
++            if pid not in graphs:graphs[pid]=PatchGraph(patches[pid])
++            r=strip_winding_delta(graphs[pid],a,b,umbilicus)
++            memo[key]=None if r is None else r['delta_windings']
++        return memo[key]
++    reached={};component_roots=[]
++    for seed in sorted(adjacency):
++        if seed in reached:continue
++        component_roots.append(seed);entry=adjacency[seed][0]['from_ij']
++        reached[seed]={'acc':0,'entry_ij':entry,'hops':0};q=deque([seed])
++        while q:
++            a=q.popleft();state=reached[a]
++            for e in adjacency[a]:
++                b=e['neighbor']
++                if b in reached:continue
++                d=strip(a,state['entry_ij'],e['from_ij'])
++                if d is None:continue
++                reached[b]={'acc':state['acc']-d-e['winding_delta'],'entry_ij':e['to_ij'],'hops':state['hops']+1};q.append(b)
++    edges=[];seen=set();unmeasurable=0
++    for a,links in adjacency.items():
++        for e in links:
++            b=e['neighbor'];key=edge_key(e)
++            if key in seen or a not in reached or b not in reached:continue
++            seen.add(key);sa=strip(a,reached[a]['entry_ij'],e['from_ij']);sb=strip(b,reached[b]['entry_ij'],e['to_ij'])
++            if sa is None or sb is None:unmeasurable+=1;continue
++            edges.append({**e,'P':a,'R':b,'D':int(e['winding_delta']+sa-sb)})
++    initial,allowed_indices=check(edges);allowed={edge_key(edges[k]) for k in allowed_indices}
++    results={}
++    unrestricted={}
++    for label,path in [('before',before),('after',after)]:
++        solve=extract(path,['solve_min_edge_fix'])['solve_min_edge_fix']
++        started=time.perf_counter();result=solve(reached,adjacency,strip,allowed_edge_keys=allowed,time_limit=120.)
++        result['wall_seconds']=time.perf_counter()-started
++        removed_keys={(e['rel_pcl_id'],frozenset((e['from_point_id'],e['to_point_id']))) for e in result['edges']}
++        removed={k for k,e in enumerate(edges) if edge_key(e) in removed_keys}
++        result['independent_retained_graph_check']=check(edges,removed)[0]
++        result['retained_edges']=len(edges)-len(removed)
++        results[label]=result
++        print(label,result['solver_status'],result['num_edges_changed'],result['independent_retained_graph_check']['consistent'],flush=True)
++        started=time.perf_counter()
++        full=solve(reached,adjacency,strip,allowed_edge_keys=None,time_limit=120.)
++        full['wall_seconds']=time.perf_counter()-started
++        changed={(e['rel_pcl_id'],frozenset((e['from_point_id'],e['to_point_id']))) for e in full['edges']}
++        removed={k for k,e in enumerate(edges) if edge_key(e) in changed}
++        full['independent_retained_graph_check']=check(edges,removed)[0]
++        unrestricted[label]=full
++    target=[]
++    for c in collections:
++        if c['source_file']=='same_windings.json' and c['source_collection_id'] in ['149','150','151']:
++            target.append({'collection':'same:'+c['source_collection_id'],'points':[
++                {'id':p['id'],'xyz':p['p'],'hits':all_hits.get(id(p),[])} for p in c['points'].values()]})
++    report={'schema_version':1,'band':[12417,12419],'patches':patch_report,'rejected_patches':rejected,'projection':'CPU villa Patch.project triangle fallback; largest area then nearest, tolerance 2.5, erosion 1 or metadata override; not native surface-index bit parity.',
++        'band_filter':'Continuous quad intersection, not vertex-only ROI prefilter.',
++        'linking_seconds':linking_seconds,'total_source_points':len(points),'attached_points':sum('on_patch' in p for p in points),
++        'cross_collections':len(cross),'reached_patches':len(reached),'component_roots':component_roots,'measurable_edges':len(edges),'unmeasurable_edges':unmeasurable,'initial_graph':initial,
++        'editable_edges':len(allowed),'solver_comparison':results,'unrestricted_solver_comparison':unrestricted,'target_traces':target,
++        'real_data_improvement_demonstrated':results['after']['independent_retained_graph_check']['consistent'] and not results['before']['independent_retained_graph_check']['consistent']}
++    for name,data in [('real_graph.json',report),('reached.json',reached),('rel_adjacency.json',adjacency),('measured_edges.json',edges)]:
++        (outdir/name).write_text(json.dumps(data,indent=2,default=serial)+'\n')
++if __name__=='__main__':main(*sys.argv[1:])

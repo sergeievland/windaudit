@@ -1,0 +1,7 @@
+{
+ "repository": "https://github.com/ScrollPrize/villa",
+ "commit": "2dcfaf6a08c3bc796fde726c4fa32050c8fc90e7",
+ "path": "spiral-fitting/point_collection.py",
+ "sha256": "4579dd9408cba04eb6d16e7a70ca9ca2fc66cabf790ae687971271d531247589",
+ "test_scope": "Executes the unmodified load_point_collection function AST from this pinned source. Full surface/patch linking imports are not exercised."
+}

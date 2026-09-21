@@ -1,0 +1,20 @@
+abs_winding.json: OK
+relative_windings.json: OK
+same_windings.json: OK
+umbilicus.json: OK
+........................................................................ [ 61%]
+..............................................                           [100%]
+118 passed in 6.01s
+{
+ "points_audited": 7645,
+ "order_pairs_tested": 11447,
+ "order_violations": 0,
+ "same_sheet_links": 2371,
+ "conflicting_pairs": 0,
+ "effective_cycles": 3,
+ "failing_cycles": 0,
+ "min_edge_cut": [],
+ "certified_links": 2371,
+ "runtime_seconds": 106.2
+}
+reproduced: 17 sections identical

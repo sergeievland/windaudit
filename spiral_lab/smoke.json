@@ -1,0 +1,11 @@
+{
+  "z_begin": 10500,
+  "z_end": 11500,
+  "optimizer_num_training_steps": 300,
+  "optimizer_random_seed": 1,
+  "output_save_png_visualizations": false,
+  "input_use_normals": false,
+  "input_use_gradient_magnitude": false,
+  "input_use_winding_inference": false,
+  "input_use_fibers": false
+}

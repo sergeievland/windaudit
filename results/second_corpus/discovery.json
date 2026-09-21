@@ -1,0 +1,851 @@
+{
+ "checked_utc": "2026-09-18",
+ "required_files": [
+  "relative_windings.json",
+  "same_windings.json",
+  "abs_winding.json",
+  "umbilicus.json"
+ ],
+ "root_index": {
+  "url": "https://dl.ash2txt.org/datasets/spiral_datasets/",
+  "sha256": "6183f629159da89d31feacf3c9beae8ccf387cb30ac8c6b63ccabb86ed4cc1a5",
+  "links": [
+   "PHerc0009B/",
+   "PHerc0125/",
+   "PHerc0139/",
+   "PHerc0175A/",
+   "PHerc0175B/",
+   "PHerc0191/",
+   "PHerc0211/",
+   "PHerc0257/",
+   "PHerc0268/",
+   "PHerc0306B/",
+   "PHerc0332/",
+   "PHerc0343/",
+   "PHerc0343P/",
+   "PHerc0358/",
+   "PHerc0483A/",
+   "PHerc0483B/",
+   "PHerc0490A/",
+   "PHerc0490B/",
+   "PHerc0500P2/",
+   "PHerc0800/",
+   "PHerc0813/",
+   "PHerc0814/",
+   "PHerc0826/",
+   "PHerc0841/",
+   "PHerc0846A/",
+   "PHercParis4/"
+  ]
+ },
+ "datasets": [
+  {
+   "dataset": "PHerc0009B",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0009B/",
+     "sha256": "ebb76a33289cec9125799853cb1d040ecc4de4b3d058598860c08219a4fc2b3b",
+     "links": [
+      "20260319104112/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0009B/20260319104112/",
+     "sha256": "d2dcf4d1ed695e15c57ef9df22b1582421ed14f8d4515c669c0480f10083d836",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0009B/20260319104112/tracks/",
+     "sha256": "6348deda193dd9b79f58d57354ed81086076f62a4849f51036a51fe4a534d231",
+     "links": [
+      "PHerc0009B_20260319104112_surface_m7_L2_th0.2.dbm.vctracks/",
+      "PHerc0009B_20260319104112_surface_m7_L2_th0.2.dbm",
+      "PHerc0009B_20260319104112_surface_m7_L2_th0.2.dbm-shm",
+      "PHerc0009B_20260319104112_surface_m7_L2_th0.2.dbm-wal",
+      "PHerc0009B_20260319104112_surface_m7_L2_th0.2.dbm.crossings.npz",
+      "PHerc0009B_20260319104112_surface_m7_L2_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0125",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0125/",
+     "sha256": "91b44710df9d11c6ed4e2b581a2651018d2e1298177294f033d1452aebaf4079",
+     "links": [
+      "20250821151825/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0125/20250821151825/",
+     "sha256": "4a00ee492db2adee2294f5afed8bce4b9192b30b563b6398813af28fc888e564",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0125/20250821151825/tracks/",
+     "sha256": "f61a07a564dd94cc8b64b69ad2c7c1e4575a40e15787c400a4961b5e0d5e0d7d",
+     "links": [
+      "PHerc0125_20250821151825_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0125_20250821151825_surface_m7_L0_th0.2.dbm",
+      "PHerc0125_20250821151825_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0125_20250821151825_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0139",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0139/",
+     "sha256": "53e2eb6c9c4ef2e089bf8b9b5a9d482855ea9b0dfe4a0d5d143ea70c07a46750",
+     "links": [
+      "20250728140407/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0139/20250728140407/",
+     "sha256": "afc48f34ef7971ac35c73b2add781889c1ba75921d121321254ce6472b7be451",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0139/20250728140407/tracks/",
+     "sha256": "ec9316aac6b141e5321f0381a3310a22b1ee409fb4919947bf9dbef8c74eefef",
+     "links": [
+      "PHerc0139_20250728140407_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0139_20250728140407_surface_m7_L0_th0.2.dbm",
+      "PHerc0139_20250728140407_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0139_20250728140407_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0175A",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0175A/",
+     "sha256": "43017d99da2e83ad558c164da9d988e88eb99d6574d6f730ccc8862da9e4b892",
+     "links": [
+      "20250521115057/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0175A/20250521115057/",
+     "sha256": "15250e50c826221c6c0b3cde0eede9d699977699ae772559dd8c6a0b2b754b90",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0175A/20250521115057/tracks/",
+     "sha256": "5494c0044e619278690f49316a4661e48705169f2c4e7b2b0eba0920166dd7b1",
+     "links": [
+      "PHerc0175A_20250521115057_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0175A_20250521115057_surface_m7_L0_th0.2.dbm",
+      "PHerc0175A_20250521115057_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0175A_20250521115057_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0175B",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0175B/",
+     "sha256": "8d34098f5f7bf273a83ead7cc2933e81757b67b28bccb0853462503393958bcf",
+     "links": [
+      "20250521125822/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0175B/20250521125822/",
+     "sha256": "0d0ee38a15d81aa87188d03b0e09d9bf33aef9cf2b9ebad4937178a8ca64d243",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0175B/20250521125822/tracks/",
+     "sha256": "5c8a29aa659562727a1bbb085910f252ecfcfc7353393568d0a519c57351e377",
+     "links": [
+      "PHerc0175B_20250521125822_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0175B_20250521125822_surface_m7_L0_th0.2.dbm",
+      "PHerc0175B_20250521125822_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0175B_20250521125822_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0191",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0191/",
+     "sha256": "908f8cadabb4eab64be3e8904c4d4dc4fd2791f625d85fc11cbcbc4686c11a09",
+     "links": [
+      "20250821151635/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0191/20250821151635/",
+     "sha256": "698d5b16a18acd26f2b5aa85b895b8fc99aa0ffa3cf58e9379c83a0e5130ec46",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0191/20250821151635/tracks/",
+     "sha256": "88a9dbd90f3a5ca1bd7c53632fabb1b82c335a1d171072c24e6781e9adb6d1c8",
+     "links": [
+      "PHerc0191_20250821151635_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0191_20250821151635_surface_m7_L0_th0.2.dbm",
+      "PHerc0191_20250821151635_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0191_20250821151635_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0211",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0211/",
+     "sha256": "5c75bf8e1d1ff38b2c3b54424c31dfc376b7179f84abd46dff7251400794656c",
+     "links": [
+      "20250821151803/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0211/20250821151803/",
+     "sha256": "f87198632537940d93f13f143ba1895be6ab39d617133d6a18d9c29c0a8a0443",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0211/20250821151803/tracks/",
+     "sha256": "4c32df55c207796522f973426843c33ce0adb3ff1ef9225865c3896859198494",
+     "links": [
+      "PHerc0211_20250821151803_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0211_20250821151803_surface_m7_L0_th0.2.dbm",
+      "PHerc0211_20250821151803_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0211_20250821151803_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0257",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0257/",
+     "sha256": "1237db29ed097e969f9ee01616bf27f3bd18b3bd918075ef88ea4d87ba41df3c",
+     "links": [
+      "20250821151750/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0257/20250821151750/",
+     "sha256": "c648114c88121dff73c2bd4f7854e4d848f0659e5e9bf557e212a211a5f97736",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0257/20250821151750/tracks/",
+     "sha256": "e80581041e93d207db88fe3f0a939a68e7a45756ac55ecf2865da5cd8827fc02",
+     "links": [
+      "PHerc0257_20250821151750_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0257_20250821151750_surface_m7_L0_th0.2.dbm",
+      "PHerc0257_20250821151750_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0257_20250821151750_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0268",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0268/",
+     "sha256": "e7e9105c2b9ea071c0e3163cef0011e08cc260c953cf110a8139dc8fe02f8414",
+     "links": [
+      "20251110183117/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0268/20251110183117/",
+     "sha256": "5aefcd0ee0888e405dcdf4e97cc4d83b74a8a931d21d0d2215125fd45b895b88",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0268/20251110183117/tracks/",
+     "sha256": "b9638259ce1248b9566d242605293f16cf14cb00fab91f84cfb33f83fecfa676",
+     "links": [
+      "PHerc0268_20251110183117_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0268_20251110183117_surface_m7_L0_th0.2.dbm",
+      "PHerc0268_20251110183117_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0268_20251110183117_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0306B",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0306B/",
+     "sha256": "6c978b6ef60c2164b4178343db532106c76c98332ee106446fde9c368cf83534",
+     "links": [
+      "20250521133212/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0306B/20250521133212/",
+     "sha256": "76c950a63d572b0dd4cfc5b3a782749ad3c0de3b9fbad6c42e2d20eb4ce7d774",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0306B/20250521133212/tracks/",
+     "sha256": "bb1ff80fc9a662d8889b6dddc0ff87ec35b3e0cd7f3a5d1dce1dded1bad7c32c",
+     "links": [
+      "PHerc0306B_20250521133212_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0306B_20250521133212_surface_m7_L0_th0.2.dbm",
+      "PHerc0306B_20250521133212_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0306B_20250521133212_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0332",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0332/",
+     "sha256": "5c25377d0d0e1433af42fa00b6ead8f6da6b6542704ca3f19c904645c1968e26",
+     "links": [
+      "20251211183505/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0332/20251211183505/",
+     "sha256": "c7e73841adf692cdd1da6282bd2c0ff2265bee87c23d104d6efaabfaac9f4f8b",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0332/20251211183505/tracks/",
+     "sha256": "c1944c18afa5b6f58ce1da3bb5712fa803075f7479a9001e6ea0de5f5b1d91d2",
+     "links": [
+      "PHerc0332_20251211183505_surface_m7_L2_th0.2.dbm.vctracks/",
+      "PHerc0332_20251211183505_surface_m7_L2_th0.2.dbm",
+      "PHerc0332_20251211183505_surface_m7_L2_th0.2.dbm.crossings.npz",
+      "PHerc0332_20251211183505_surface_m7_L2_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0343",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0343/",
+     "sha256": "46c67fa33888ef421d811c19e11e0779196c82747ea9a213e292bd55f123bf9f",
+     "links": [
+      "20250521140437/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0343/20250521140437/",
+     "sha256": "3dd025e85b8bc624423ba070e7d9375aff2855f5095da4bababff1deceb982f1",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0343/20250521140437/tracks/",
+     "sha256": "d22563269c434b517fcecf65f99c440bcbbda8fec41e2cfba4d89df1b81250f2",
+     "links": [
+      "PHerc0343_20250521140437_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0343_20250521140437_surface_m7_L0_th0.2.dbm",
+      "PHerc0343_20250521140437_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0343_20250521140437_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0343P",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0343P/",
+     "sha256": "9e448d5d9b07ab428758cbad5943745fdfbba3cd58df007fafbdd4f37894930b",
+     "links": [
+      "20260304131111/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0343P/20260304131111/",
+     "sha256": "3d71354a38e2adecb07823489ce0989c9abe446b30538ecb8ebd8252620eb53f",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0343P/20260304131111/tracks/",
+     "sha256": "f1167ae285cbf68a67e225e3534d55b92ad8bba629917e4b6ef9432722bff515",
+     "links": [
+      "PHerc0343P_20260304131111_surface_m7_L2_th0.2.dbm.vctracks/",
+      "PHerc0343P_20260304131111_surface_m7_L2_th0.2.dbm",
+      "PHerc0343P_20260304131111_surface_m7_L2_th0.2.dbm.crossings.npz",
+      "PHerc0343P_20260304131111_surface_m7_L2_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0358",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0358/",
+     "sha256": "1b188b46e8592d9436985f8dcb5e32b73967779d3163e376e1aa134c0f10afce",
+     "links": [
+      "20250821151737/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0358/20250821151737/",
+     "sha256": "65d7caf2f1f37acf9a7aedec0dd98c2745959000c4573f2c7efdb760e47c15a2",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0358/20250821151737/tracks/",
+     "sha256": "81f4d8c9904d57ec625f294576d3488d13d8be47b912b9c8664031c2c3a2a916",
+     "links": [
+      "PHerc0358_20250821151737_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0358_20250821151737_surface_m7_L0_th0.2.dbm",
+      "PHerc0358_20250821151737_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0358_20250821151737_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0483A",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0483A/",
+     "sha256": "eba070b2d0f82c368d76590041d5ab322180ef117b500b55a00b84ee3639a3ab",
+     "links": [
+      "20250521140913/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0483A/20250521140913/",
+     "sha256": "e3b127fdf8c84e4359ee8d8940615cd5a99ce1e135cb105c1f277412c1ed2c1d",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0483A/20250521140913/tracks/",
+     "sha256": "1f2857ed613fd4456940687b91f24cd5caa9032023e8693315b13a2bb70c6e33",
+     "links": [
+      "PHerc0483A_20250521140913_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0483A_20250521140913_surface_m7_L0_th0.2.dbm",
+      "PHerc0483A_20250521140913_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0483A_20250521140913_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0483B",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0483B/",
+     "sha256": "02718fd1784630e61f0e2430473f96205e5af4f856a0234c6c194c6122dc4096",
+     "links": [
+      "20251124083638/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0483B/20251124083638/",
+     "sha256": "903bb3e087bed9ad5f9c38a0f8e4659051586c07746fbc716001b0779c279c75",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0483B/20251124083638/tracks/",
+     "sha256": "7ef688b4e00423ca28c7efe4a6cb4d9c1330f134d78a1742a05245c6333a7b18",
+     "links": [
+      "PHerc0483B_20251124083638_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0483B_20251124083638_surface_m7_L0_th0.2.dbm",
+      "PHerc0483B_20251124083638_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0483B_20251124083638_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0490A",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0490A/",
+     "sha256": "4572ff6012bf6e102a20816da3180e4a38d712175653baf6bdd8de8fe0dcadb1",
+     "links": [
+      "20250521151210/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0490A/20250521151210/",
+     "sha256": "7b5188b31ecd119f2239ab7257080bf6b8fb0dea3c2cc48e7ad2ff827aa62348",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0490A/20250521151210/tracks/",
+     "sha256": "0cf362796a1a7d4564bb8659cfa93f088a15bccc3f6a25738d0e6f4c165a7789",
+     "links": [
+      "PHerc0490A_20250521151210_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0490A_20250521151210_surface_m7_L0_th0.2.dbm",
+      "PHerc0490A_20250521151210_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0490A_20250521151210_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0490B",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0490B/",
+     "sha256": "ecdfd46b1dc2da7227b7ab6e83af99accd754077e8f688e7c98385fc96faf64b",
+     "links": [
+      "20250521151215/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0490B/20250521151215/",
+     "sha256": "b227e2b11872b67203647de9c0180ada5d2d092aaaf2cee069d8863763542db5",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0490B/20250521151215/tracks/",
+     "sha256": "c2dc6a94492acb6fffd5a82ebb8d8008d8c7ac5654df2999ce554f025e9f8dbe",
+     "links": [
+      "PHerc0490B_20250521151215_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0490B_20250521151215_surface_m7_L0_th0.2.dbm",
+      "PHerc0490B_20250521151215_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0490B_20250521151215_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0500P2",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0500P2/",
+     "sha256": "4de1aad057161a0e6cb66197622122a89e07be01fc3c89582603f9697e7167fa",
+     "links": [
+      "20250526151718/",
+      "20250820143440/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0500P2/20250526151718/",
+     "sha256": "18ea5e51543d581a1924f5d7999f968bce2b1f2076438d2948bb2fac4e2c40e6",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0500P2/20250526151718/tracks/",
+     "sha256": "ec5f2a06631367aa4b0ac29e3e62762cdda613f72b9b16a669d77c4f95c7d8bb",
+     "links": [
+      "PHerc0500P2_20250526151718_surface_m7_L2_th0.2.dbm.vctracks/",
+      "PHerc0500P2_20250526151718_surface_m7_L2_th0.2.dbm",
+      "PHerc0500P2_20250526151718_surface_m7_L2_th0.2.dbm.crossings.npz",
+      "PHerc0500P2_20250526151718_surface_m7_L2_th0.2.extract.json"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0500P2/20250820143440/",
+     "sha256": "d6985dbbd6b3829d0af896456df86a9ddec8ab16fbccc219df61d5989c157d46",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0500P2/20250820143440/tracks/",
+     "sha256": "e06f8c519e55d935f3495a81d314c18ba1f511fc72eee3db5dc45498e77a5ea2",
+     "links": [
+      "PHerc0500P2_20250820143440_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0500P2_20250820143440_surface_m7_L0_th0.2.dbm",
+      "PHerc0500P2_20250820143440_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0500P2_20250820143440_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0800",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0800/",
+     "sha256": "b4b4f38899f29a494f2c58aade4968bc82f97ac20eef458a9956e71eac2cd7b2",
+     "links": [
+      "20250521135224/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0800/20250521135224/",
+     "sha256": "e07607b3d5effd591122d3f9d6198da75d7ec787687a97f01c3369ba6d3417f9",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0800/20250521135224/tracks/",
+     "sha256": "cc80c7246c9db78fb993ec3f532eff6f207afd4b7fc82811007589289105c8cb",
+     "links": [
+      "PHerc0800_20250521135224_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0800_20250521135224_surface_m7_L0_th0.2.dbm",
+      "PHerc0800_20250521135224_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0800_20250521135224_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0813",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0813/",
+     "sha256": "338a06ffd74adc3dd0dc43fb985ab6859741a5c9c63645b4290ad93f76c8b56a",
+     "links": [
+      "20250821151723/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0813/20250821151723/",
+     "sha256": "a85dac586dcdd17cee6f7d27f7e1b42b01bd738b0482587d910983f5811ab91e",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0813/20250821151723/tracks/",
+     "sha256": "e919a11440b6d388d3ce1d8e70f43eddd9d28eeb2db9681a7074020483140185",
+     "links": [
+      "PHerc0813_20250821151723_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0813_20250821151723_surface_m7_L0_th0.2.dbm",
+      "PHerc0813_20250821151723_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0813_20250821151723_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0814",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0814/",
+     "sha256": "ffdfb30f5b0a3dd687b1b1c1a47d9972753e19a35fe7a915274462b7dec80ee1",
+     "links": [
+      "20250804134230/",
+      "20260309142202/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0814/20250804134230/",
+     "sha256": "429ec54290840f11647a1a81a113539cad0e30cf9068c57de4b26a8f9c9e324b",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0814/20250804134230/tracks/",
+     "sha256": "b808bad51994e0ad3360a2cbd027e90c08330a48335f00de46c7fcadf276c21d",
+     "links": [
+      "PHerc0814_20250804134230_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0814_20250804134230_surface_m7_L0_th0.2.dbm",
+      "PHerc0814_20250804134230_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0814_20250804134230_surface_m7_L0_th0.2.extract.json"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0814/20260309142202/",
+     "sha256": "633defab5c1ad652160f69b5c0871375eb46a52b1e8d9a23ccf304edef3523b1",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0814/20260309142202/tracks/",
+     "sha256": "c2491498f57ac91ba814a02e250ed8ecf5d79051d53a0073633b8fc676abef89",
+     "links": [
+      "PHerc0814_20260309142202_surface_m7_L2_th0.2.dbm.vctracks/",
+      "PHerc0814_20260309142202_surface_m7_L2_th0.2.dbm",
+      "PHerc0814_20260309142202_surface_m7_L2_th0.2.dbm.crossings.npz",
+      "PHerc0814_20260309142202_surface_m7_L2_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0826",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0826/",
+     "sha256": "c41450047af004f2304d52a948c5047d3968c263770f9be46e886200399df28b",
+     "links": [
+      "20250821151701/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0826/20250821151701/",
+     "sha256": "e5e9094ae668f0821b4c7513cd21fc20ddffcbf65ae8b8c69d5da5a339fbf885",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0826/20250821151701/tracks/",
+     "sha256": "dd65021473c3d8218b30eca4f27cff9661e4d295e32d4e97e3047fb0497800c8",
+     "links": [
+      "PHerc0826_20250821151701_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0826_20250821151701_surface_m7_L0_th0.2.dbm",
+      "PHerc0826_20250821151701_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0826_20250821151701_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0841",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0841/",
+     "sha256": "302f84af03712622a19a0def4bc429d4ebd5c70b28aad2661f09b2074ceb3442",
+     "links": [
+      "20250821151531/",
+      "20260319124803/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0841/20250821151531/",
+     "sha256": "6a8be79d9675befe653cf0f63cd1752fd24de9a3999664e67fe623c7abac853d",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0841/20250821151531/tracks/",
+     "sha256": "c7171ecbf4c3dfa1090a9acc67f373a7b1ea321b79132cdfc1588d2451c1bcd7",
+     "links": [
+      "PHerc0841_20250821151531_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0841_20250821151531_surface_m7_L0_th0.2.dbm",
+      "PHerc0841_20250821151531_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0841_20250821151531_surface_m7_L0_th0.2.extract.json"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0841/20260319124803/",
+     "sha256": "c3564bae62af983db04107b284cf6f5d7f7bce04f4e1aaaeb7241180ebd06f57",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0841/20260319124803/tracks/",
+     "sha256": "a52caea4df88fc40c2516fcbf31072785962d94b66d324775a6a3369b941ddae",
+     "links": [
+      "PHerc0841_20260319124803_surface_m7_L2_th0.2.dbm.vctracks/",
+      "PHerc0841_20260319124803_surface_m7_L2_th0.2.dbm",
+      "PHerc0841_20260319124803_surface_m7_L2_th0.2.dbm.crossings.npz",
+      "PHerc0841_20260319124803_surface_m7_L2_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  },
+  {
+   "dataset": "PHerc0846A",
+   "indexes": [
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0846A/",
+     "sha256": "6214200670d08b0a6896345b3e4ffa81d8681965645149b98231364bc84069b6",
+     "links": [
+      "20250728152254/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0846A/20250728152254/",
+     "sha256": "2aec84be50cfb5a8285b681a18fd4939edc86f5cbdbfbfe1ed19af8af0965bb3",
+     "links": [
+      "tracks/"
+     ]
+    },
+    {
+     "url": "https://dl.ash2txt.org/datasets/spiral_datasets/PHerc0846A/20250728152254/tracks/",
+     "sha256": "25b47be9ca4c85342daf32bced645ae393ac80065d67b5e6f8dec26fadfbc6d4",
+     "links": [
+      "PHerc0846A_20250728152254_surface_m7_L0_th0.2.dbm.vctracks/",
+      "PHerc0846A_20250728152254_surface_m7_L0_th0.2.dbm",
+      "PHerc0846A_20250728152254_surface_m7_L0_th0.2.dbm.crossings.npz",
+      "PHerc0846A_20250728152254_surface_m7_L0_th0.2.extract.json"
+     ]
+    }
+   ],
+   "complete_input_locations": []
+  }
+ ],
+ "status": "blocked_no_second_complete_corpus_in_listed_locations",
+ "scope": "Root, scan and tracks indexes for every listed non-Paris dataset. No volumes, tracks or unlisted guessed paths downloaded."
+}

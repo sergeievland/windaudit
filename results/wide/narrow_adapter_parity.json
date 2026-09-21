@@ -1,0 +1,19 @@
+{
+  "band": true,
+  "patches": true,
+  "rejected_patches": true,
+  "total_source_points": true,
+  "attached_points": true,
+  "cross_collections": true,
+  "reached_patches": true,
+  "component_roots": true,
+  "measurable_edges": true,
+  "unmeasurable_edges": true,
+  "initial_graph": true,
+  "editable_edges": true,
+  "target_traces": true,
+  "reached.json": true,
+  "rel_adjacency.json": true,
+  "measured_edges.json": true,
+  "band_transport_gate.json": true
+}

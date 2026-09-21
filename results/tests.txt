@@ -1,0 +1,498 @@
+REPRODUCE RUN 1
+$ bash scripts/reproduce.sh
+abs_winding.json: OK
+relative_windings.json: OK
+same_windings.json: OK
+umbilicus.json: OK
+........................................................................ [ 30%]
+........................................................................ [ 61%]
+..................................................................s..... [ 91%]
+....................                                                     [100%]
+235 passed, 1 skipped in 7.98s
+{
+ "points_audited": 7645,
+ "order_pairs_tested": 11447,
+ "order_violations": 0,
+ "same_sheet_links": 2371,
+ "conflicting_pairs": 0,
+ "effective_cycles": 3,
+ "failing_cycles": 0,
+ "min_edge_cut": [],
+ "certified_links": 2371,
+ "runtime_seconds": 111.3
+}
+reproduced: 17 sections identical
+Order graph, coverage, hashes, negative-cycle witness, 140 null records and 238 diagnostic identities verified.
+
+exit_code=0
+
+REPRODUCE RUN 2
+$ bash scripts/reproduce.sh
+abs_winding.json: OK
+relative_windings.json: OK
+same_windings.json: OK
+umbilicus.json: OK
+........................................................................ [ 30%]
+........................................................................ [ 61%]
+..................................................................s..... [ 91%]
+....................                                                     [100%]
+235 passed, 1 skipped in 8.13s
+{
+ "points_audited": 7645,
+ "order_pairs_tested": 11447,
+ "order_violations": 0,
+ "same_sheet_links": 2371,
+ "conflicting_pairs": 0,
+ "effective_cycles": 3,
+ "failing_cycles": 0,
+ "min_edge_cut": [],
+ "certified_links": 2371,
+ "runtime_seconds": 108.1
+}
+reproduced: 17 sections identical
+Order graph, coverage, hashes, negative-cycle witness, 140 null records and 238 diagnostic identities verified.
+
+exit_code=0
+
+REPEAT COMPARISON: 17 reproducible report sections identical.
+certified_links.json: byte-identical
+review_queue.json: byte-identical
+{
+  "certified_links.json": "e865fcaa4a02cd78e00f814613bc34c0c8b9cec804952149d026feac84446bad",
+  "review_queue.json": "067f30a026daccdef47928b2b105bbd2d464609f4f32e29c1170f0c7e85286ac"
+}
+BASELINE PRESERVATION
+{
+  "all_previous_published_values_unchanged": true,
+  "old_files_checked_byte_for_byte": 101,
+  "changed_old_files": [],
+  "exceptions": [
+    "SHA256SUMS rebuilt",
+    "results/tests.txt refreshed; original preserved under results/legacy_borderline/"
+  ]
+}
+
+FINAL TEST RUN
+$ python -m pytest -q
+........................................................................ [ 30%]
+........................................................................ [ 61%]
+..................................................................s..... [ 91%]
+....................                                                     [100%]
+235 passed, 1 skipped in 8.23s
+
+REAL GRAPH REPRODUCTION
+$ bash scripts/reproduce_scanspace.sh
+patching file spiral-fitting/find_inconsistent_windings.py
+loaded surfaces 46
+edge gate 0000_top_vt_strip_1 0
+edge gate 0000_top_vt_strip_2 0
+edge gate 0003_fill_sel_20260512_105100_10 0
+edge gate 0003_fill_sel_20260512_105100_11 0
+edge gate 0004_fill_sel_20260512_105437_14 0
+edge gate 0004_fill_sel_20260512_105437_16 0
+edge gate 0004_fill_sel_20260512_105437_31 0
+edge gate 0004_fill_sel_20260512_105437_32 0
+edge gate 0004_fill_sel_20260512_105437_5 0
+edge gate 0004_fill_sel_20260512_105437_53 0
+edge gate 1000_fill_sel_20260512_105755_25 0
+edge gate 1000_fill_sel_20260512_105755_34 0
+edge gate 1000_fill_sel_20260512_105755_7 0
+edge gate 1001_fill_sel_20260512_104442_11 0
+edge gate 1001_fill_sel_20260512_104442_21 0
+edge gate 1001_fill_sel_20260512_104442_24 0
+edge gate 4424_david_masked 0
+edge gate 5753_-1_flatboi_copy 0
+edge gate fill_0005_sel_20260512_110744_7 0
+edge gate fill_0005_sel_20260512_110744_8 0
+edge gate fill_0005_sel_20260512_110744_9 0
+edge gate fill_0006_sel_20260512_111110_29 0
+edge gate fill_0006_sel_20260512_111110_30 0
+edge gate fill_0006_sel_20260512_111110_8 0
+edge gate fill_0006_sel_20260512_111110_9 0
+edge gate fill_0007_sel_20260512_111459_32 0
+edge gate fill_0007_sel_20260512_111459_34 0
+edge gate fill_0007_sel_20260512_111459_35 0
+edge gate fill_0007_sel_20260512_111459_36 0
+edge gate fill_0007_sel_20260512_111459_38 0
+edge gate fill_0007_sel_20260512_111459_6 0
+edge gate fill_0007_sel_20260512_111459_7 0
+edge gate fill_0007_sel_20260512_111459_8 0
+edge gate fill_0008_sel_20260512_104623_3 0
+edge gate middle_3_flat 0
+edge gate monster_-1_sel_20260512_113604_7 0
+edge gate s30_sel_20260512_112451_1 0
+edge gate s30_sel_20260512_112451_2 0
+edge gate s30_sel_20260512_112451_9 0
+edge gate s47_sel_20260512_112553_1 0
+edge gate same_wrap001085_lasagna 0
+edge gate same_wrap002019_lasagna 0
+edge gate same_wrap002436_lasagna 0
+edge gate same_wrap002603_lasagna 0
+edge gate same_wrap002606_lasagna 0
+edge gate sorta_monster 0
+projected 1000
+projected 2000
+projected 3000
+projected 4000
+projected 5000
+projected 6000
+projected 7000
+before no edges 0 True
+after Optimization terminated successfully. (HiGHS Status 7: Optimal) 0 True
+real_graph.json: reproduced
+band_transport_gate.json: reproduced
+reached.json: reproduced
+rel_adjacency.json: reproduced
+measured_edges.json: reproduced
+
+COMBINED PATCH
+patch --dry-run against pinned source: all four target files passed.
+Existing solver-candidate.patch unchanged. No collection identity fix added.
+Final byte comparison of 101 original files: unchanged. README unchanged.
+
+PACKAGE VALIDATION
+$ sha256sum -c SHA256SUMS
+.github/workflows/tests.yml: OK
+.gitignore: OK
+EXPERIMENT.md: OK
+LICENSE: OK
+METHODS.md: OK
+ORDER_VALIDATION.md: OK
+README.md: OK
+SCANSPACE_TRANSPORT.md: OK
+THIRD_PARTY_DATA.md: OK
+VALIDATION.md: OK
+data/paris4/SHA256SUMS: OK
+data/paris4/abs_winding.json: OK
+data/paris4/relative_windings.json: OK
+data/paris4/same_windings.json: OK
+data/paris4/umbilicus.json: OK
+data/scanspace_band/0000_top_vt_strip_1/meta.json: OK
+data/scanspace_band/0000_top_vt_strip_1/x.tif: OK
+data/scanspace_band/0000_top_vt_strip_1/y.tif: OK
+data/scanspace_band/0000_top_vt_strip_1/z.tif: OK
+data/scanspace_band/0000_top_vt_strip_2/meta.json: OK
+data/scanspace_band/0000_top_vt_strip_2/x.tif: OK
+data/scanspace_band/0000_top_vt_strip_2/y.tif: OK
+data/scanspace_band/0000_top_vt_strip_2/z.tif: OK
+data/scanspace_band/0003_fill_sel_20260512_105100_10/meta.json: OK
+data/scanspace_band/0003_fill_sel_20260512_105100_10/x.tif: OK
+data/scanspace_band/0003_fill_sel_20260512_105100_10/y.tif: OK
+data/scanspace_band/0003_fill_sel_20260512_105100_10/z.tif: OK
+data/scanspace_band/0003_fill_sel_20260512_105100_11/meta.json: OK
+data/scanspace_band/0003_fill_sel_20260512_105100_11/x.tif: OK
+data/scanspace_band/0003_fill_sel_20260512_105100_11/y.tif: OK
+data/scanspace_band/0003_fill_sel_20260512_105100_11/z.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_14/meta.json: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_14/x.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_14/y.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_14/z.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_16/meta.json: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_16/x.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_16/y.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_16/z.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_31/meta.json: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_31/x.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_31/y.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_31/z.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_32/meta.json: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_32/x.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_32/y.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_32/z.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_5/meta.json: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_5/x.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_5/y.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_5/z.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_53/meta.json: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_53/x.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_53/y.tif: OK
+data/scanspace_band/0004_fill_sel_20260512_105437_53/z.tif: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_25/meta.json: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_25/x.tif: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_25/y.tif: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_25/z.tif: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_34/meta.json: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_34/x.tif: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_34/y.tif: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_34/z.tif: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_7/meta.json: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_7/x.tif: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_7/y.tif: OK
+data/scanspace_band/1000_fill_sel_20260512_105755_7/z.tif: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_11/meta.json: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_11/x.tif: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_11/y.tif: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_11/z.tif: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_21/meta.json: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_21/x.tif: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_21/y.tif: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_21/z.tif: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_24/meta.json: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_24/x.tif: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_24/y.tif: OK
+data/scanspace_band/1001_fill_sel_20260512_104442_24/z.tif: OK
+data/scanspace_band/4424_david_masked/meta.json: OK
+data/scanspace_band/4424_david_masked/x.tif: OK
+data/scanspace_band/4424_david_masked/y.tif: OK
+data/scanspace_band/4424_david_masked/z.tif: OK
+data/scanspace_band/5753_-1_flatboi_copy/meta.json: OK
+data/scanspace_band/5753_-1_flatboi_copy/x.tif: OK
+data/scanspace_band/5753_-1_flatboi_copy/y.tif: OK
+data/scanspace_band/5753_-1_flatboi_copy/z.tif: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_7/meta.json: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_7/x.tif: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_7/y.tif: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_7/z.tif: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_8/meta.json: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_8/x.tif: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_8/y.tif: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_8/z.tif: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_9/meta.json: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_9/x.tif: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_9/y.tif: OK
+data/scanspace_band/fill_0005_sel_20260512_110744_9/z.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_29/meta.json: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_29/x.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_29/y.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_29/z.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_30/meta.json: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_30/x.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_30/y.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_30/z.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_8/meta.json: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_8/x.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_8/y.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_8/z.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_9/meta.json: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_9/x.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_9/y.tif: OK
+data/scanspace_band/fill_0006_sel_20260512_111110_9/z.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_32/meta.json: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_32/x.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_32/y.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_32/z.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_34/meta.json: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_34/x.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_34/y.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_34/z.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_35/meta.json: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_35/x.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_35/y.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_35/z.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_36/meta.json: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_36/x.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_36/y.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_36/z.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_38/meta.json: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_38/x.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_38/y.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_38/z.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_6/meta.json: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_6/x.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_6/y.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_6/z.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_7/meta.json: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_7/x.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_7/y.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_7/z.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_8/meta.json: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_8/x.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_8/y.tif: OK
+data/scanspace_band/fill_0007_sel_20260512_111459_8/z.tif: OK
+data/scanspace_band/fill_0008_sel_20260512_104623_3/meta.json: OK
+data/scanspace_band/fill_0008_sel_20260512_104623_3/x.tif: OK
+data/scanspace_band/fill_0008_sel_20260512_104623_3/y.tif: OK
+data/scanspace_band/fill_0008_sel_20260512_104623_3/z.tif: OK
+data/scanspace_band/fill_0010_sel_20260512_111940_32/meta.json: OK
+data/scanspace_band/fill_0010_sel_20260512_111940_32/x.tif: OK
+data/scanspace_band/fill_0010_sel_20260512_111940_32/y.tif: OK
+data/scanspace_band/fill_0010_sel_20260512_111940_32/z.tif: OK
+data/scanspace_band/middle_3_flat/meta.json: OK
+data/scanspace_band/middle_3_flat/x.tif: OK
+data/scanspace_band/middle_3_flat/y.tif: OK
+data/scanspace_band/middle_3_flat/z.tif: OK
+data/scanspace_band/monster_-1_sel_20260512_113604_7/meta.json: OK
+data/scanspace_band/monster_-1_sel_20260512_113604_7/x.tif: OK
+data/scanspace_band/monster_-1_sel_20260512_113604_7/y.tif: OK
+data/scanspace_band/monster_-1_sel_20260512_113604_7/z.tif: OK
+data/scanspace_band/s30_sel_20260512_112451_1/meta.json: OK
+data/scanspace_band/s30_sel_20260512_112451_1/x.tif: OK
+data/scanspace_band/s30_sel_20260512_112451_1/y.tif: OK
+data/scanspace_band/s30_sel_20260512_112451_1/z.tif: OK
+data/scanspace_band/s30_sel_20260512_112451_2/meta.json: OK
+data/scanspace_band/s30_sel_20260512_112451_2/x.tif: OK
+data/scanspace_band/s30_sel_20260512_112451_2/y.tif: OK
+data/scanspace_band/s30_sel_20260512_112451_2/z.tif: OK
+data/scanspace_band/s30_sel_20260512_112451_9/meta.json: OK
+data/scanspace_band/s30_sel_20260512_112451_9/x.tif: OK
+data/scanspace_band/s30_sel_20260512_112451_9/y.tif: OK
+data/scanspace_band/s30_sel_20260512_112451_9/z.tif: OK
+data/scanspace_band/s47_sel_20260512_112553_1/meta.json: OK
+data/scanspace_band/s47_sel_20260512_112553_1/x.tif: OK
+data/scanspace_band/s47_sel_20260512_112553_1/y.tif: OK
+data/scanspace_band/s47_sel_20260512_112553_1/z.tif: OK
+data/scanspace_band/same_wrap001085_lasagna/meta.json: OK
+data/scanspace_band/same_wrap001085_lasagna/x.tif: OK
+data/scanspace_band/same_wrap001085_lasagna/y.tif: OK
+data/scanspace_band/same_wrap001085_lasagna/z.tif: OK
+data/scanspace_band/same_wrap002019_lasagna/meta.json: OK
+data/scanspace_band/same_wrap002019_lasagna/x.tif: OK
+data/scanspace_band/same_wrap002019_lasagna/y.tif: OK
+data/scanspace_band/same_wrap002019_lasagna/z.tif: OK
+data/scanspace_band/same_wrap002204_lasagna/meta.json: OK
+data/scanspace_band/same_wrap002204_lasagna/x.tif: OK
+data/scanspace_band/same_wrap002204_lasagna/y.tif: OK
+data/scanspace_band/same_wrap002204_lasagna/z.tif: OK
+data/scanspace_band/same_wrap002436_lasagna/meta.json: OK
+data/scanspace_band/same_wrap002436_lasagna/x.tif: OK
+data/scanspace_band/same_wrap002436_lasagna/y.tif: OK
+data/scanspace_band/same_wrap002436_lasagna/z.tif: OK
+data/scanspace_band/same_wrap002603_lasagna/meta.json: OK
+data/scanspace_band/same_wrap002603_lasagna/x.tif: OK
+data/scanspace_band/same_wrap002603_lasagna/y.tif: OK
+data/scanspace_band/same_wrap002603_lasagna/z.tif: OK
+data/scanspace_band/same_wrap002606_lasagna/meta.json: OK
+data/scanspace_band/same_wrap002606_lasagna/x.tif: OK
+data/scanspace_band/same_wrap002606_lasagna/y.tif: OK
+data/scanspace_band/same_wrap002606_lasagna/z.tif: OK
+data/scanspace_band/sorta_monster/meta.json: OK
+data/scanspace_band/sorta_monster/x.tif: OK
+data/scanspace_band/sorta_monster/y.tif: OK
+data/scanspace_band/sorta_monster/z.tif: OK
+data/scanspace_probe/0000_low_band_final/meta.json: OK
+data/scanspace_probe/0000_low_band_final/x.tif: OK
+data/scanspace_probe/0000_low_band_final/y.tif: OK
+data/scanspace_probe/0000_low_band_final/z.tif: OK
+data/scanspace_probe/0000_top_vt_strip_1/meta.json: OK
+data/scanspace_probe/0000_top_vt_strip_1/x.tif: OK
+data/scanspace_probe/0000_top_vt_strip_1/y.tif: OK
+data/scanspace_probe/0000_top_vt_strip_1/z.tif: OK
+data/scanspace_probe/0000_top_vt_strip_2/meta.json: OK
+data/scanspace_probe/0000_top_vt_strip_2/x.tif: OK
+data/scanspace_probe/0000_top_vt_strip_2/y.tif: OK
+data/scanspace_probe/0000_top_vt_strip_2/z.tif: OK
+experiments/scanspace/cycle_probe.py: OK
+experiments/scanspace/gate.py: OK
+pyproject.toml: OK
+results/baseline_preservation.json: OK
+results/export_reproduction.json: OK
+results/legacy_0_2_1/SHA256SUMS: OK
+results/legacy_0_2_1/tests.txt: OK
+results/legacy_borderline/SHA256SUMS: OK
+results/legacy_borderline/tests.txt: OK
+results/order_acceptance.json: OK
+results/order_environment.json: OK
+results/order_export_reproduction.json: OK
+results/paris4/audit_report.json: OK
+results/paris4/borderline_links.json: OK
+results/paris4/borderline_links.png: OK
+results/paris4/certified_links.json: OK
+results/paris4/order_diagnostic.json: OK
+results/paris4/order_pair_census.json: OK
+results/paris4/order_report.json: OK
+results/paris4/order_retries.json: OK
+results/paris4/review_queue.json: OK
+results/paris4/summary.png: OK
+results/quarantine_counterexample.json: OK
+results/reproduction.txt: OK
+results/scanspace/band_transport_gate.json: OK
+results/scanspace/measured_edges.json: OK
+results/scanspace/reached.json: OK
+results/scanspace/real_graph.json: OK
+results/scanspace/rel_adjacency.json: OK
+results/scanspace_download_plan.json: OK
+results/scanspace_environment.json: OK
+results/scanspace_initial/band_transport_gate.json: OK
+results/scanspace_initial/measured_edges.json: OK
+results/scanspace_initial/reached.json: OK
+results/scanspace_initial/real_graph.json: OK
+results/scanspace_initial/rel_adjacency.json: OK
+results/scanspace_input_hashes.json: OK
+results/scanspace_metadata_census.json: OK
+results/scanspace_preservation.json: OK
+results/scanspace_supplementary_gate.json: OK
+results/scanspace_supplementary_plan.json: OK
+results/scanspace_transport.json: OK
+results/second_corpus/discovery.json: OK
+results/selection_grid.json: OK
+results/selection_grid_order.json: OK
+results/server_verification.json: OK
+results/tests.txt: OK
+results/upgrade_comparison.json: OK
+results/validation_environment.json: OK
+scripts/align_control_alarms.py: OK
+scripts/build_scanspace_patch.py: OK
+scripts/compare_reports.py: OK
+scripts/compare_scanspace.py: OK
+scripts/diagnostic_order.py: OK
+scripts/discover_second_corpus.py: OK
+scripts/make_figure.py: OK
+scripts/package_release.py: OK
+scripts/package_scanspace.py: OK
+scripts/probe_order.py: OK
+scripts/reproduce.sh: OK
+scripts/reproduce_legacy.sh: OK
+scripts/reproduce_order.sh: OK
+scripts/reproduce_scanspace.sh: OK
+scripts/retry_unknown_order.py: OK
+scripts/scanspace_acceptance.py: OK
+scripts/scanspace_real_graph.py: OK
+scripts/select_order.py: OK
+scripts/summarise_scanspace.py: OK
+scripts/verify_order.py: OK
+spiral_lab/README.md: OK
+spiral_lab/fetch.sh: OK
+spiral_lab/launch.py: OK
+spiral_lab/setup.sh: OK
+spiral_lab/smoke.json: OK
+spiral_lab/windows_diagnostics.ps1: OK
+tests/__init__.py: OK
+tests/conftest.py: OK
+tests/test_audit.py: OK
+tests/test_calibrate.py: OK
+tests/test_cli.py: OK
+tests/test_controls.py: OK
+tests/test_frame.py: OK
+tests/test_graph.py: OK
+tests/test_launcher.py: OK
+tests/test_matching.py: OK
+tests/test_order_constraints.py: OK
+tests/test_order_geometry.py: OK
+tests/test_order_sites.py: OK
+tests/test_paris4_golden.py: OK
+tests/test_pcl.py: OK
+tests/test_repair.py: OK
+tests/test_repair_regressions.py: OK
+tests/test_scanspace.py: OK
+tests/test_upstream_loader.py: OK
+upstream/README.md: OK
+upstream/after.json: OK
+upstream/before.json: OK
+upstream/check_solver.py: OK
+upstream/scanspace-combined.patch: OK
+upstream/scanspace_provenance.json: OK
+upstream/solver-candidate.patch: OK
+upstream/villa/LICENSE: OK
+upstream/villa/find_inconsistent_windings.py: OK
+upstream/villa/point_collection.py: OK
+upstream/villa/provenance.json: OK
+windaudit/__init__.py: OK
+windaudit/__main__.py: OK
+windaudit/audit.py: OK
+windaudit/calibrate.py: OK
+windaudit/cli.py: OK
+windaudit/controls.py: OK
+windaudit/frame.py: OK
+windaudit/graph.py: OK
+windaudit/localize.py: OK
+windaudit/matching.py: OK
+windaudit/order_cli.py: OK
+windaudit/order_constraints.py: OK
+windaudit/order_controls.py: OK
+windaudit/pcl.py: OK
+windaudit/repair.py: OK
+windaudit/report.py: OK
+windaudit/scanspace.py: OK
+windaudit/scanspace_surface.py: OK
+All manifest entries verified; manifest rebuilt once more after recording this log.
+Cyrillic text scan: clean.

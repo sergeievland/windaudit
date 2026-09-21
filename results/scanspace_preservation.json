@@ -1,0 +1,9 @@
+{
+  "all_previous_published_values_unchanged": true,
+  "old_files_checked_byte_for_byte": 101,
+  "changed_old_files": [],
+  "exceptions": [
+    "SHA256SUMS rebuilt",
+    "results/tests.txt refreshed; original preserved under results/legacy_borderline/"
+  ]
+}

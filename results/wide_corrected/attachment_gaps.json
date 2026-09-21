@@ -1,0 +1,130 @@
+{
+  "enabled": true,
+  "directed_edges_corrected": 4,
+  "records": [
+    {
+      "pcl_id": 82,
+      "pcl_name": "col109",
+      "from_patch": "auto_grown_20260416042041050",
+      "to_patch": "auto_grown_20260416060452889",
+      "from_point_id": 1559,
+      "to_point_id": 1560,
+      "gap_from": 0,
+      "gap_to": 1,
+      "from_point_xyz": [
+        5119.82080078125,
+        4460.83544921875,
+        14242.12890625
+      ],
+      "from_strip_end_xyz": [
+        5120.69482421875,
+        4461.7109375,
+        14242.3232421875
+      ],
+      "to_point_xyz": [
+        5151.95849609375,
+        4456.23095703125,
+        14220.4853515625
+      ],
+      "to_strip_end_xyz": [
+        5152.9931640625,
+        4457.11865234375,
+        14220.607421875
+      ],
+      "winding_delta_uncorrected": 0
+    },
+    {
+      "pcl_id": 82,
+      "pcl_name": "col109",
+      "from_patch": "auto_grown_20260429215626691_sel_20260512_102916_8",
+      "to_patch": "auto_grown_20260416060452889",
+      "from_point_id": 1561,
+      "to_point_id": 1560,
+      "gap_from": 0,
+      "gap_to": 1,
+      "from_point_xyz": [
+        5175.6787109375,
+        4452.83203125,
+        14208.1171875
+      ],
+      "from_strip_end_xyz": [
+        5175.8740234375,
+        4453.0107421875,
+        14208.099609375
+      ],
+      "to_point_xyz": [
+        5151.95849609375,
+        4456.23095703125,
+        14220.4853515625
+      ],
+      "to_strip_end_xyz": [
+        5152.9931640625,
+        4457.11865234375,
+        14220.607421875
+      ],
+      "winding_delta_uncorrected": -1
+    },
+    {
+      "pcl_id": 82,
+      "pcl_name": "col109",
+      "from_patch": "auto_grown_20260416060452889",
+      "to_patch": "auto_grown_20260416042041050",
+      "from_point_id": 1560,
+      "to_point_id": 1559,
+      "gap_from": -1,
+      "gap_to": 0,
+      "from_point_xyz": [
+        5151.95849609375,
+        4456.23095703125,
+        14220.4853515625
+      ],
+      "from_strip_end_xyz": [
+        5152.9931640625,
+        4457.11865234375,
+        14220.607421875
+      ],
+      "to_point_xyz": [
+        5119.82080078125,
+        4460.83544921875,
+        14242.12890625
+      ],
+      "to_strip_end_xyz": [
+        5120.69482421875,
+        4461.7109375,
+        14242.3232421875
+      ],
+      "winding_delta_uncorrected": 0
+    },
+    {
+      "pcl_id": 82,
+      "pcl_name": "col109",
+      "from_patch": "auto_grown_20260416060452889",
+      "to_patch": "auto_grown_20260429215626691_sel_20260512_102916_8",
+      "from_point_id": 1560,
+      "to_point_id": 1561,
+      "gap_from": -1,
+      "gap_to": 0,
+      "from_point_xyz": [
+        5151.95849609375,
+        4456.23095703125,
+        14220.4853515625
+      ],
+      "from_strip_end_xyz": [
+        5152.9931640625,
+        4457.11865234375,
+        14220.607421875
+      ],
+      "to_point_xyz": [
+        5175.6787109375,
+        4452.83203125,
+        14208.1171875
+      ],
+      "to_strip_end_xyz": [
+        5175.8740234375,
+        4453.0107421875,
+        14208.099609375
+      ],
+      "winding_delta_uncorrected": 1
+    }
+  ]
+}

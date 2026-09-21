@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use windaudit, please cite it as below."
+title: "windaudit: exact, frame-invariant audits of winding constraints for the Vesuvius Challenge"
+authors:
+  - family-names: Evland
+    given-names: Sergei
+version: 0.2.1
+date-released: 2026-09-21
+license: MIT
+keywords:
+  - Vesuvius Challenge
+  - Herculaneum scrolls
+  - winding constraints
+  - spiral fitting
+  - integer programming

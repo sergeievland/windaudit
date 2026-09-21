@@ -1,0 +1,7 @@
+{
+  "endpoints": 892,
+  "mean_gap_radians": 0.0006115864052959644,
+  "max_gap_radians": 0.018692970275878906,
+  "expected_straddled_endpoints_uniform_ray": 0.08682460358134521,
+  "probability_at_least_one_poisson": 0.08316210838610338
+}

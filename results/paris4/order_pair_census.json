@@ -1,0 +1,13 @@
+{
+ "definition": "Comparable pairs after legacy seam safety, z/angular limits and slope availability; equality-only crowd veto not applied.",
+ "including_neighbour_cells": {
+  "point_pairs": 139308,
+  "collection_pairs": 998,
+  "nodes": 186
+ },
+ "same_cell_only": {
+  "point_pairs": 54401,
+  "collection_pairs": 882,
+  "nodes": 168
+ }
+}

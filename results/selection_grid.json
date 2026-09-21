@@ -1,0 +1,170 @@
+{
+ "purpose": "Selection of the edge-support rule and the same-sheet tolerance, recorded before the committed audit was produced.",
+ "grid": {
+  "min_edge_support": [
+   1,
+   2,
+   3
+  ],
+  "r_same_factor": [
+   0.25,
+   0.35
+  ]
+ },
+ "seed": 777,
+ "null_control": "isotropic Gaussian jitter, sigma = 1 voxel, on every relative and same-winding point; 20 rounds",
+ "selection_rule": "among settings with at most 2 of 20 null rounds raising an alarm, the highest planted-defect alarm rates",
+ "selected": {
+  "min_edge_support": 2,
+  "r_same_factor": 0.35
+ },
+ "committed_report_seed": 20260917,
+ "rows": [
+  {
+   "min_edge_support": 1,
+   "r_same_factor": 0.25,
+   "links": 1410,
+   "edges": 92,
+   "conflict_pairs": 0,
+   "baseline_implicated": [],
+   "null_rounds_with_alarm": 4,
+   "null_rounds": 20,
+   "skipped_wrap": {
+    "reachable_sites": 7,
+    "n_trials": 14,
+    "alarm_rate": 1.0,
+    "localization_rate": 0.14285714285714285,
+    "shortlist_rate": 1.0
+   },
+   "sheet_switch": {
+    "reachable_sites": 73,
+    "n_trials": 146,
+    "alarm_rate": 0.6027397260273972,
+    "localization_rate": 0.273972602739726,
+    "shortlist_rate": 0.6027397260273972
+   }
+  },
+  {
+   "min_edge_support": 1,
+   "r_same_factor": 0.35,
+   "links": 2378,
+   "edges": 105,
+   "conflict_pairs": 0,
+   "baseline_implicated": [
+    "same:19"
+   ],
+   "null_rounds_with_alarm": 16,
+   "null_rounds": 20,
+   "skipped_wrap": {
+    "reachable_sites": 8,
+    "n_trials": 16,
+    "alarm_rate": 0.875,
+    "localization_rate": 0.125,
+    "shortlist_rate": 0.875
+   },
+   "sheet_switch": {
+    "reachable_sites": 86,
+    "n_trials": 172,
+    "alarm_rate": 0.7383720930232558,
+    "localization_rate": 0.3488372093023256,
+    "shortlist_rate": 0.627906976744186
+   }
+  },
+  {
+   "min_edge_support": 2,
+   "r_same_factor": 0.25,
+   "links": 1398,
+   "edges": 80,
+   "conflict_pairs": 0,
+   "baseline_implicated": [],
+   "null_rounds_with_alarm": 1,
+   "null_rounds": 20,
+   "skipped_wrap": {
+    "reachable_sites": 6,
+    "n_trials": 12,
+    "alarm_rate": 1.0,
+    "localization_rate": 0.16666666666666666,
+    "shortlist_rate": 1.0
+   },
+   "sheet_switch": {
+    "reachable_sites": 29,
+    "n_trials": 58,
+    "alarm_rate": 0.3275862068965517,
+    "localization_rate": 0.017241379310344827,
+    "shortlist_rate": 0.3275862068965517
+   }
+  },
+  {
+   "min_edge_support": 2,
+   "r_same_factor": 0.35,
+   "links": 2371,
+   "edges": 98,
+   "conflict_pairs": 0,
+   "baseline_implicated": [],
+   "null_rounds_with_alarm": 2,
+   "null_rounds": 20,
+   "skipped_wrap": {
+    "reachable_sites": 7,
+    "n_trials": 14,
+    "alarm_rate": 1.0,
+    "localization_rate": 0.14285714285714285,
+    "shortlist_rate": 1.0
+   },
+   "sheet_switch": {
+    "reachable_sites": 48,
+    "n_trials": 96,
+    "alarm_rate": 0.5729166666666666,
+    "localization_rate": 0.17708333333333334,
+    "shortlist_rate": 0.5729166666666666
+   }
+  },
+  {
+   "min_edge_support": 3,
+   "r_same_factor": 0.25,
+   "links": 1388,
+   "edges": 75,
+   "conflict_pairs": 0,
+   "baseline_implicated": [],
+   "null_rounds_with_alarm": 0,
+   "null_rounds": 20,
+   "skipped_wrap": {
+    "reachable_sites": 6,
+    "n_trials": 12,
+    "alarm_rate": 1.0,
+    "localization_rate": 0.16666666666666666,
+    "shortlist_rate": 1.0
+   },
+   "sheet_switch": {
+    "reachable_sites": 19,
+    "n_trials": 38,
+    "alarm_rate": 0.18421052631578946,
+    "localization_rate": 0.0,
+    "shortlist_rate": 0.18421052631578946
+   }
+  },
+  {
+   "min_edge_support": 3,
+   "r_same_factor": 0.35,
+   "links": 2359,
+   "edges": 92,
+   "conflict_pairs": 0,
+   "baseline_implicated": [],
+   "null_rounds_with_alarm": 1,
+   "null_rounds": 20,
+   "skipped_wrap": {
+    "reachable_sites": 6,
+    "n_trials": 12,
+    "alarm_rate": 1.0,
+    "localization_rate": 0.0,
+    "shortlist_rate": 1.0
+   },
+   "sheet_switch": {
+    "reachable_sites": 20,
+    "n_trials": 40,
+    "alarm_rate": 0.325,
+    "localization_rate": 0.0,
+    "shortlist_rate": 0.325
+   }
+  }
+ ]
+}

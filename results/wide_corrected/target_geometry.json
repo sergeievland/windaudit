@@ -1,0 +1,38 @@
+[
+  {
+    "left": "same:149",
+    "right": "same:150",
+    "verdict": "unresolved",
+    "transport_values": [],
+    "witnesses": [],
+    "connected_left_points": 0,
+    "connected_right_points": 0,
+    "left_total_points": 32,
+    "right_total_points": 32,
+    "scope": "Reconstructed surface evidence at fixed 2.5-voxel point attachment tolerance; no annotation equality edges used for these paths."
+  },
+  {
+    "left": "same:150",
+    "right": "same:151",
+    "verdict": "unresolved",
+    "transport_values": [],
+    "witnesses": [],
+    "connected_left_points": 0,
+    "connected_right_points": 0,
+    "left_total_points": 32,
+    "right_total_points": 38,
+    "scope": "Reconstructed surface evidence at fixed 2.5-voxel point attachment tolerance; no annotation equality edges used for these paths."
+  },
+  {
+    "left": "same:149",
+    "right": "same:151",
+    "verdict": "unresolved",
+    "transport_values": [],
+    "witnesses": [],
+    "connected_left_points": 0,
+    "connected_right_points": 0,
+    "left_total_points": 32,
+    "right_total_points": 38,
+    "scope": "Reconstructed surface evidence at fixed 2.5-voxel point attachment tolerance; no annotation equality edges used for these paths."
+  }
+]

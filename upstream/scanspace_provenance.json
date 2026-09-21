@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/ScrollPrize/villa",
+  "commit": "2dcfaf6a08c3bc796fde726c4fa32050c8fc90e7",
+  "reviewed_source_sha256": {
+    "find_inconsistent_windings.py": "2fe5ee4f5b71981d5fff984c8c5ac2401b6a359acb6bfdc582371fa9192e3f51",
+    "connect_overlapping_patches.py": "a23050632860ee65b5cb229969c51a2468818487de2dd52081db2a46726252ae",
+    "sample_spiral.py": "332ce819841aef36f76966ed773e15b65621c67d4ab4e7c3433f33522280f503",
+    "tifxyz.py": "c74f00fddd0242a1307392c257dcb774cb9fbde40aae6ec553ced3b438fd48a6",
+    "umbilicus.py": "07a8bd8d7b7fc0dc1947d7817e8cc7ad25a965915f6780147ce018d7c919c0ea",
+    "config.py": "a1f4be45ca72b47536cc52109e644b2d40c4e77889e69e32c08efa27601ebc59",
+    "spiral_helpers.py": "418cf3cf3ee8ef221c4503630b7c7a4a782c497c27ac71e2062722d3a3082b69"
+  },
+  "solver_candidate_sha256": "dec261edaedd9b48390293962e6741ec8734454f2444af9a5785d97fbd6e3f1c",
+  "collection_identity_change": false,
+  "source_file_claim": "Upstream already enumerates context.cross_patch_pcls. No collision bug is claimed or patched.",
+  "native_index_parity": false,
+  "projection": "CPU port of pinned Patch.project triangular fallback",
+  "runtime": "NumPy/SciPy/Pillow only; no torch import or checkpoint"
+}

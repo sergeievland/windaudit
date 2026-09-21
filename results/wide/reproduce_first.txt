@@ -1,0 +1,23 @@
+abs_winding.json: OK
+relative_windings.json: OK
+same_windings.json: OK
+umbilicus.json: OK
+........................................................................ [ 30%]
+........................................................................ [ 60%]
+..................................................................s..... [ 90%]
+.......................                                                  [100%]
+238 passed, 1 skipped in 8.18s
+{
+ "points_audited": 7645,
+ "order_pairs_tested": 11447,
+ "order_violations": 0,
+ "same_sheet_links": 2371,
+ "conflicting_pairs": 0,
+ "effective_cycles": 3,
+ "failing_cycles": 0,
+ "min_edge_cut": [],
+ "certified_links": 2371,
+ "runtime_seconds": 110.2
+}
+reproduced: 17 sections identical
+Order graph, coverage, hashes, negative-cycle witness, 140 null records and 238 diagnostic identities verified.

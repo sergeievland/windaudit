@@ -1,0 +1,9 @@
+{
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "pillow": "12.3.0",
+  "device": "CPU",
+  "torch_required": false,
+  "checkpoint_required": false
+}

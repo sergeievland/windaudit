@@ -1,0 +1,62 @@
+[
+ {
+  "collection": "same:13",
+  "name": "same_wrap13",
+  "n_points": 85,
+  "evidence": [
+   "wrap-scale radial step against the trace's local trend"
+  ],
+  "robustness": 0.0,
+  "in_quarantine": false,
+  "locations": [
+   {
+    "step_from_xyz": [
+     4001.69091796875,
+     3045.013671875,
+     7925.95166015625
+    ],
+    "step_to_xyz": [
+     4007.7880859375,
+     3047.5703125,
+     7942.93994140625
+    ],
+    "residual_voxels": -37.11
+   }
+  ],
+  "example_xyz": [
+   4001.69091796875,
+   3045.013671875,
+   7925.95166015625
+  ]
+ },
+ {
+  "collection": "same:34",
+  "name": "same_wrap34",
+  "n_points": 67,
+  "evidence": [
+   "wrap-scale radial step against the trace's local trend"
+  ],
+  "robustness": 0.0,
+  "in_quarantine": false,
+  "locations": [
+   {
+    "step_from_xyz": [
+     4172.259765625,
+     3012.82763671875,
+     9615.154296875
+    ],
+    "step_to_xyz": [
+     4187.82958984375,
+     3022.18310546875,
+     9614.0322265625
+    ],
+    "residual_voxels": -21.07
+   }
+  ],
+  "example_xyz": [
+   4005.897216796875,
+   2912.866943359375,
+   9017.09765625
+  ]
+ }
+]

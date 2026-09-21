@@ -1,0 +1,32 @@
+{
+ "status": "experimental_empirical_acceptance_not_met",
+ "implemented": [
+  "difference_constraints",
+  "negative_cycle_certificates",
+  "big_M_repair",
+  "exact_cycle_separation",
+  "unit_cost_evidence_groups",
+  "all_optima_membership",
+  "independent_exhaustive_references",
+  "legacy_byte_preservation"
+ ],
+ "empirical_gates": {
+  "margin_selection": "failed_all_seven_candidates",
+  "frozen_margin": null,
+  "second_corpus": "blocked_no_complete_inputs_in_25_other_public_datasets",
+  "confirmed_physical_contradiction": false
+ },
+ "diagnostic": {
+  "margin": 1,
+  "n_trials": 238,
+  "unknown_trials": 0,
+  "quarantine_optimal": true,
+  "edge_cut_optimal": true,
+  "edge_cut_groups": 96.0
+ },
+ "limitations": [
+  "No full second independent rerun of all order controls",
+  "Additional-site planted rates are sampled, not exhaustive",
+  "Upstream loader function executed from original AST, not full GPU module import"
+ ]
+}

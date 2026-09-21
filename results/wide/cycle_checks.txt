@@ -1,0 +1,21 @@
+{
+  "vertices_in_measured_graph": 330,
+  "edges": 645,
+  "components": 27,
+  "fundamental_cycles": 342,
+  "inconsistent_fundamental_cycles": 3,
+  "independent_checks": {
+    "before": {
+      "retained_graph_consistent": true,
+      "all_proposals_are_numeric_delta_edits": true,
+      "full_graph_after_proposed_delta_edits_consistent": true
+    },
+    "after": {
+      "retained_graph_consistent": true,
+      "all_proposals_are_numeric_delta_edits": true,
+      "full_graph_after_proposed_delta_edits_consistent": true
+    }
+  },
+  "observed_quality_improvement": false,
+  "scope": "Real sampled surfaces and original annotations; no planted defects. Both solver proposals are checked against every measured edge."
+}

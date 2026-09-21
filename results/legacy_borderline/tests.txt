@@ -1,0 +1,64 @@
+Validation performed on 18 September 2026
+
+CURRENT SCIPY ENVIRONMENT
+{
+ "python": "3.12.14",
+ "numpy": "2.3.5",
+ "scipy": "1.17.0",
+ "pytest": "9.1.1",
+ "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+ "legacy_repeated": true,
+ "full_order_controls_repeated": false
+}
+
+COMMAND: bash scripts/reproduce.sh
+EXIT: 0
+abs_winding.json: OK
+relative_windings.json: OK
+same_windings.json: OK
+umbilicus.json: OK
+........................................................................ [ 32%]
+........................................................................ [ 64%]
+..................................................................s..... [ 96%]
+.......                                                                  [100%]
+222 passed, 1 skipped in 8.32s
+{
+ "points_audited": 7645,
+ "order_pairs_tested": 11447,
+ "order_violations": 0,
+ "same_sheet_links": 2371,
+ "conflicting_pairs": 0,
+ "effective_cycles": 3,
+ "failing_cycles": 0,
+ "min_edge_cut": [],
+ "certified_links": 2371,
+ "runtime_seconds": 110.7
+}
+reproduced: 17 sections identical
+Order graph, coverage, hashes, negative-cycle witness, 140 null records and 238 diagnostic identities verified.
+
+SCIPY 1.11.4 / NUMPY 1.26.4 COMPATIBILITY
+COMMAND: python -m pytest -q
+EXIT: 0
+........................................................................ [ 32%]
+........................................................................ [ 64%]
+..................................................................s..... [ 96%]
+.......                                                                  [100%]
+222 passed, 1 skipped in 6.24s
+
+The unchanged legacy skip is test_repair_regressions: generated graph has nothing to repair.
+
+Byte comparison: certified_links.json PASS; review_queue.json PASS.
+Original 68 files remain present. All original Python modules, tests, Paris4 report and exports are byte-identical. See baseline_preservation.json.
+
+Order controls: all 140 null runs completed; every margin rejected (18 or 20 alarms / 20).
+Diagnostic trials: 238 resolved; three initial unknowns resolved on recorded retries.
+Mathematical checks: independent Floyd-Warshall, exhaustive optimal node/group subsets, both repair formulations, SCC decomposition and canonical choices.
+Second corpus: BLOCKED; no complete four-input corpus found among 25 other public dataset listings.
+Full repeated order-control batch: NOT EXECUTED. The default reproduction rebuilds the graph and validates saved control records.
+Upstream compatibility: actual pinned loader function AST executed; full GPU/patch module integration NOT EXECUTED.
+
+Empirical acceptance: FAILED (no eligible margin; second-corpus validation blocked).
+
+COMMAND: sha256sum -c SHA256SUMS
+EXIT: 0; every manifest entry verified. Manifest rebuilt after this log entry and verified again before delivery.

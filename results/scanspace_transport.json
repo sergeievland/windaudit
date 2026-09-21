@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "status": "passed_on_tested_patches",
+  "step_size": 1.0,
+  "seed": 20260920,
+  "patches": [
+    {
+      "patch": "0000_low_band_final",
+      "shape": [
+        130,
+        3498,
+        3
+      ],
+      "valid_quads": 189134,
+      "components": 1,
+      "pairs": 800,
+      "routes_per_pair": 5,
+      "distinct_alternative_routes": 3085,
+      "disagreeing_pairs": 0,
+      "pair_disagreement_fraction": 0.0,
+      "closed_contours": 3200,
+      "nonzero_closed_contours": 0,
+      "invalid_samples_dropped": 142,
+      "examples": [],
+      "input_sha256": {
+        "meta.json": "c5d7988e19ecaff0049ac8d13a87e65766239bf687a48a42202de766ad62a6d9",
+        "x.tif": "13a21c6e94c39acb7b985a36a998046cbda7202ccf14c74bbcb95f66c9043b1b",
+        "y.tif": "b645f75ab3cdcc4a1c23c55c2b48e2a703de2c23d1bdffb2e532e5bbea5b7107",
+        "z.tif": "281d368ed01588d2cdddc0d1f92c40feeed172179ebdc655b130c5e9f4e1d4ec"
+      }
+    },
+    {
+      "patch": "0000_top_vt_strip_1",
+      "shape": [
+        439,
+        179,
+        3
+      ],
+      "valid_quads": 19572,
+      "components": 1,
+      "pairs": 800,
+      "routes_per_pair": 5,
+      "distinct_alternative_routes": 2710,
+      "disagreeing_pairs": 0,
+      "pair_disagreement_fraction": 0.0,
+      "closed_contours": 3200,
+      "nonzero_closed_contours": 0,
+      "invalid_samples_dropped": 0,
+      "examples": [],
+      "input_sha256": {
+        "meta.json": "76f20f589c5886c97463f6e650889af0faa6cc14abc882cce25a179b076b7512",
+        "x.tif": "5d6e2412b0d904f53b171dad93a92cd0854615850ff861f09cffdad68decb49f",
+        "y.tif": "e9474c015ab36722ccb80ca97472898b36effd535c08853c01d3f82f24c6b272",
+        "z.tif": "1e60ca93b7560cc889d02d6469d1c05196c4e2231a65b4601ddf7cf1447af888"
+      }
+    },
+    {
+      "patch": "0000_top_vt_strip_2",
+      "shape": [
+        417,
+        159,
+        3
+      ],
+      "valid_quads": 4927,
+      "components": 1,
+      "pairs": 800,
+      "routes_per_pair": 5,
+      "distinct_alternative_routes": 2702,
+      "disagreeing_pairs": 0,
+      "pair_disagreement_fraction": 0.0,
+      "closed_contours": 3200,
+      "nonzero_closed_contours": 0,
+      "invalid_samples_dropped": 0,
+      "examples": [],
+      "input_sha256": {
+        "meta.json": "3bf700a537e86e513060860d3f7a683afe27fe8f2cf85cf8df9faa8c78313931",
+        "x.tif": "3bc7b3bbedf99d4beb22ad806340a58f68f85e341cddfdad99170fe1c074d3e4",
+        "y.tif": "255979a23abfb7806a093eb43c6453618f4ca4c2d750d7e05456b306848f9554",
+        "z.tif": "61d75b1ebd7015cd595d4e85271c88ab3051e3b2b6966406a9e4cf863ecd1c03"
+      }
+    }
+  ],
+  "pairs": 2400,
+  "disagreeing_pairs": 0,
+  "closed_contours": 9600,
+  "nonzero_closed_contours": 0,
+  "edge_integrability": [
+    {
+      "patch": "0000_low_band_final",
+      "edges": 745209,
+      "inconsistent_edges": 0,
+      "max_abs_residual": 0,
+      "invalid_diagonal_midpoints": 243
+    },
+    {
+      "patch": "0000_top_vt_strip_1",
+      "edges": 77089,
+      "inconsistent_edges": 0,
+      "max_abs_residual": 0,
+      "invalid_diagonal_midpoints": 0
+    },
+    {
+      "patch": "0000_top_vt_strip_2",
+      "edges": 19052,
+      "inconsistent_edges": 0,
+      "max_abs_residual": 0,
+      "invalid_diagonal_midpoints": 3
+    }
+  ],
+  "scope": "Finite real-patch gate; not proof for unseen patches.",
+  "disagreement_fraction": 0.0,
+  "selected_band_gate": {
+    "patches": 46,
+    "edges": 1916361,
+    "cycle_rank": 1429048,
+    "inconsistent_edges": 0,
+    "step_size": 1.0,
+    "details": "scanspace/band_transport_gate.json"
+  },
+  "route_count_note": "distinct_alternative_routes counts routes different from the baseline, not pairwise unique alternatives.",
+  "independent_synthetic_tests": "tests/test_scanspace.py: analytic turn counts, direct positive-ray intersection oracle, surface routes, plane projection, and a failing annular surface.",
+  "real_graph_report": "scanspace/real_graph.json",
+  "real_data_solver_improvement_demonstrated": false,
+  "same_149_same_151_sheet_identity": "unresolved: target surface coverage is incomplete",
+  "task_evidence_status": "transport gate passed; real-data non-regression measured; improvement and target sheet identity unproven"
+}

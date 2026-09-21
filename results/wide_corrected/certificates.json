@@ -1,0 +1,81 @@
+{
+  "rule": "Each step walks one equation 'gauge(to_patch) - gauge(from_patch) = contribution'. Add the contributions. A nonzero total proves that the equations on this walk cannot all hold simultaneously.",
+  "graph_equations": 645,
+  "certificates": [
+    {
+      "sum_of_contributions": -1,
+      "steps": [
+        {
+          "annotation": "col264",
+          "source_file": "relative_windings.json",
+          "point_ids": [
+            2882,
+            2883
+          ],
+          "from_patch": "auto_grown_20260521161130783_sel_20260521_161535_29",
+          "to_patch": "auto_grown_20260521225553961_sel_20260521_225725_10",
+          "walked": "stored",
+          "contribution": 1,
+          "annotation_winding_difference": 1,
+          "point_xyz": [
+            [
+              5903.53271484375,
+              3913.16259765625,
+              10357.9560546875
+            ],
+            [
+              5915.154296875,
+              3907.99755859375,
+              10357.9560546875
+            ]
+          ],
+          "attachment": [
+            {
+              "patch": "auto_grown_20260521161130783_sel_20260521_161535_29",
+              "distance_voxels": 0.754
+            },
+            {
+              "patch": "auto_grown_20260521225553961_sel_20260521_225725_10",
+              "distance_voxels": 1.798
+            }
+          ]
+        },
+        {
+          "annotation": "col208",
+          "source_file": "relative_windings.json",
+          "point_ids": [
+            2335,
+            2337
+          ],
+          "from_patch": "auto_grown_20260521225553961_sel_20260521_225725_10",
+          "to_patch": "auto_grown_20260521161130783_sel_20260521_161535_29",
+          "walked": "reversed",
+          "contribution": -2,
+          "annotation_winding_difference": -2,
+          "point_xyz": [
+            [
+              5896.1630859375,
+              3978.244384765625,
+              10215.02734375
+            ],
+            [
+              5929.40234375,
+              3961.238037109375,
+              10215.02734375
+            ]
+          ],
+          "attachment": [
+            {
+              "patch": "auto_grown_20260521161130783_sel_20260521_161535_29",
+              "distance_voxels": 1.671
+            },
+            {
+              "patch": "auto_grown_20260521225553961_sel_20260521_225725_10",
+              "distance_voxels": 0.601
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

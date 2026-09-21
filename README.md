@@ -90,15 +90,13 @@ This is a property of the construction, not of one scan frame: every fitted tran
 | patch B → patch A | `col208` | 2335 → 2337 | reversed | −2 | 1.67, 0.60 voxels |
 | | | | **sum** | **−1** | |
 
-Patch A is `auto_grown_20260521161130783_sel_20260521_161535_29` and patch B `auto_grown_20260521225553961_sel_20260521_225725_10`, at z ≈ 10,215–10,358. On both steps the branch correction is zero and the strip terms cancel, so the contradiction is carried entirely by the two annotations' own winding differences. Exactly two single edits repair it, one on either annotation; there is not enough CT evidence in this release to choose between them. The certificate, both candidate repairs and coordinates are in `results/wide_corrected/certificates.json` and `repair_report.json`.
+Patch A is `auto_grown_20260521161130783_sel_20260521_161535_29` and patch B `auto_grown_20260521225553961_sel_20260521_225725_10`, at z ≈ 10,215–10,358. On both steps the branch correction is zero and the strip terms cancel, so the contradiction is carried entirely by the two annotations' own winding differences. Exactly two single edits repair it — changing either annotation — so windaudit labels both `possible`; it is the place to look in VC3D. Every certificate is written out with its signed step contributions in `results/*/certificates.json`.
 
-## 3. Three defects in the upstream diagnostic
+## 3. Three upstream defects the audit exposed
 
-The patch-level run exposed three independent defects in `spiral-fitting/find_inconsistent_windings.py`.
+**The attachment gap is never transported** — the defect described above. It is corrected and tested in the patch-graph harness (`WIDE_ATTACHMENT_GAP=1`), and [WIDE_SCANSPACE_AUDIT.md](WIDE_SCANSPACE_AUDIT.md) specifies the change in terms that carry over to upstream's code.
 
-**The diagnostic can invent a contradiction at the annotation-to-surface attachment.** The missing transport term above makes two equations off by one winding, producing two spurious inconsistent cycles and a harmful edit recommendation on the real PHercParis4 graph.
-
-**The solver drops non-editable equations.** It creates a binary edit variable only for editable edges, then only adds equations for edges with such a variable. Non-editable equations therefore vanish from the model. On the real graph it keeps 7 of 645 equations as upstream builds it, and 2 of 645 once the missing term is added:
+**The repair solver drops almost every real constraint.** `solve_min_edge_fix` is documented as restricting which edges may *change*. In the restricted mode upstream uses, the code instead leaves every non-editable edge out of the model, so the equations that pin the rest of the graph disappear. On the real graph it keeps 7 of 645 equations as upstream builds it, and 2 of 645 once the missing term is added:
 
 | Graph with the missing term added | Upstream | Patched |
 |---|---:|---:|

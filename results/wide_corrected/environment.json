@@ -1,0 +1,10 @@
+{
+  "python": "3.11.15",
+  "numpy": "2.4.4",
+  "scipy": "1.17.1",
+  "platform": "Linux-6.18.44-fc-v37-x86_64-with-glibc2.39",
+  "attachment_gap_transported": true,
+  "upstream_commit": "2dcfaf6a08c3bc796fde726c4fa32050c8fc90e7",
+  "sampling_step": 1.0,
+  "projection_tolerance": 2.5
+}

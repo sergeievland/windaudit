@@ -1,0 +1,135 @@
+{
+  "seed": 2,
+  "edges": [
+    {
+      "a": [
+        "relative",
+        0
+      ],
+      "b": [
+        "relative",
+        1
+      ],
+      "offset": -2,
+      "support": 2
+    },
+    {
+      "a": [
+        "relative",
+        0
+      ],
+      "b": [
+        "relative",
+        3
+      ],
+      "offset": -1,
+      "support": 5
+    },
+    {
+      "a": [
+        "relative",
+        0
+      ],
+      "b": [
+        "relative",
+        4
+      ],
+      "offset": 2,
+      "support": 1
+    },
+    {
+      "a": [
+        "relative",
+        1
+      ],
+      "b": [
+        "relative",
+        2
+      ],
+      "offset": 0,
+      "support": 2
+    },
+    {
+      "a": [
+        "relative",
+        1
+      ],
+      "b": [
+        "relative",
+        3
+      ],
+      "offset": -1,
+      "support": 5
+    },
+    {
+      "a": [
+        "relative",
+        1
+      ],
+      "b": [
+        "relative",
+        4
+      ],
+      "offset": 1,
+      "support": 3
+    },
+    {
+      "a": [
+        "relative",
+        2
+      ],
+      "b": [
+        "relative",
+        3
+      ],
+      "offset": 2,
+      "support": 3
+    },
+    {
+      "a": [
+        "relative",
+        2
+      ],
+      "b": [
+        "relative",
+        4
+      ],
+      "offset": 2,
+      "support": 8
+    },
+    {
+      "a": [
+        "relative",
+        3
+      ],
+      "b": [
+        "relative",
+        4
+      ],
+      "offset": -1,
+      "support": 3
+    }
+  ],
+  "old_removed": [
+    [
+      "relative",
+      1
+    ],
+    [
+      "relative",
+      4
+    ]
+  ],
+  "expected_removed": [
+    [
+      "relative",
+      1
+    ],
+    [
+      "relative",
+      3
+    ]
+  ],
+  "old_support_lost": 24,
+  "correct_support_lost": 23
+}
